@@ -10,7 +10,7 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API
 created: '2025-02-08'
-modified: '2025-02-08'
+modified: '2026-03-16'
 url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -19,12 +19,14 @@ apis:
     description: >-
       Customize your websites functionality, build apps for Wix websites, and
       create headless sites 
-    humanURL: https://www.wix.com/
+    humanURL: https://dev.wix.com/
     tags:
-      - API
+      - Website Builder
+      - CMS
+      - Headless
     properties:
       - type: Documentation
-        url: https://www.wix.com/
+        url: https://dev.wix.com/
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
