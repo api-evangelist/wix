@@ -138,6 +138,10 @@ common:
         description: Starter templates for headless Wix commerce with Next.js.
       - name: Webhooks
         description: Event-driven notifications for order, contact, and site events.
+  - type: Integrations
+    url: https://www.wix.com/marketplace
+integrations:
+  - name: View templates
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
