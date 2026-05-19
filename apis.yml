@@ -17,7 +17,7 @@ tags:
   - Headless
   - Website Builder
 created: '2025-02-08'
-modified: '2026-05-03'
+modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -140,6 +140,12 @@ common:
         description: Event-driven notifications for order, contact, and site events.
   - type: Integrations
     url: https://www.wix.com/marketplace
+  - name: MCP Server
+    url: https://github.com/wix/wix-mcp
+    type: MCPServer
+  - name: Agent Skills
+    url: https://github.com/wix/skills
+    type: AgentSkill
 integrations:
   - name: View templates
 maintainers:
