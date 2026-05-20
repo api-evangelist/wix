@@ -75,6 +75,8 @@ apis:
       - type: Documentation
         url: https://dev.wix.com/docs/go-headless
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/wix-com
   - type: Website
     url: https://www.wix.com
   - type: DeveloperPortal
