@@ -1,0 +1,195 @@
+openapi: 3.1.0
+info:
+  title: Wix REST API
+  description: |
+    Wix REST API provides programmatic access to Wix business solutions including
+    e-commerce (carts, checkouts, orders, products), site services, and OAuth 2.0
+    authentication. Apps authenticate via OAuth on behalf of Wix users, site visitors,
+    or members.
+  version: "1.0"
+  contact:
+    name: Wix
+    url: https://dev.wix.com/docs/rest
+servers:
+  - url: https://www.wixapis.com
+    description: Wix API production server
+security:
+  - oauth2: []
+  - apiKey: []
+tags:
+  - name: OAuth
+  - name: Cart
+  - name: Checkout
+  - name: Orders
+  - name: Products
+paths:
+  /oauth2/token:
+    post:
+      tags: [OAuth]
+      summary: Request an access token
+      description: Create an OAuth 2.0 access token for app authentication
+      operationId: requestAccessToken
+      responses:
+        "200": { description: OK }
+  /oauth2/token/refresh:
+    post:
+      tags: [OAuth]
+      summary: Refresh an access token
+      operationId: refreshAccessToken
+      responses:
+        "200": { description: OK }
+  /oauth2/token/info:
+    get:
+      tags: [OAuth]
+      summary: Get token info
+      operationId: getTokenInfo
+      responses:
+        "200": { description: OK }
+  /ecom/v1/carts:
+    post:
+      tags: [Cart]
+      summary: Create cart
+      operationId: createCart
+      responses:
+        "201": { description: Created }
+  /ecom/v1/carts/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Cart]
+      summary: Get cart
+      operationId: getCart
+      responses:
+        "200": { description: OK }
+    delete:
+      tags: [Cart]
+      summary: Delete cart
+      operationId: deleteCart
+      responses:
+        "204": { description: No Content }
+  /ecom/v1/carts/{id}/update:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    post:
+      tags: [Cart]
+      summary: Update cart
+      operationId: updateCart
+      responses:
+        "200": { description: OK }
+  /ecom/v1/checkouts:
+    post:
+      tags: [Checkout]
+      summary: Create checkout
+      operationId: createCheckout
+      responses:
+        "201": { description: Created }
+  /ecom/v1/checkouts/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Checkout]
+      summary: Get checkout
+      operationId: getCheckout
+      responses:
+        "200": { description: OK }
+    post:
+      tags: [Checkout]
+      summary: Update checkout
+      operationId: updateCheckout
+      responses:
+        "200": { description: OK }
+  /ecom/v1/orders:
+    post:
+      tags: [Orders]
+      summary: Create order
+      operationId: createOrder
+      responses:
+        "201": { description: Created }
+  /ecom/v1/orders/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Orders]
+      summary: Get order
+      operationId: getOrder
+      responses:
+        "200": { description: OK }
+    post:
+      tags: [Orders]
+      summary: Update order
+      operationId: updateOrder
+      responses:
+        "200": { description: OK }
+  /ecom/v1/orders/search:
+    post:
+      tags: [Orders]
+      summary: Search orders
+      operationId: searchOrders
+      responses:
+        "200": { description: OK }
+  /stores/v3/products:
+    post:
+      tags: [Products]
+      summary: Create product
+      operationId: createProduct
+      responses:
+        "201": { description: Created }
+  /stores/v3/products/query:
+    post:
+      tags: [Products]
+      summary: Query products
+      operationId: queryProducts
+      responses:
+        "200": { description: OK }
+  /stores/v3/products/search:
+    post:
+      tags: [Products]
+      summary: Search products
+      operationId: searchProducts
+      responses:
+        "200": { description: OK }
+  /stores/v3/products/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Products]
+      summary: Get product
+      operationId: getProduct
+      responses:
+        "200": { description: OK }
+    patch:
+      tags: [Products]
+      summary: Update product
+      operationId: updateProduct
+      responses:
+        "200": { description: OK }
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for Wix third-party apps
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wix.com/installer/install
+          tokenUrl: https://www.wixapis.com/oauth2/token
+          scopes: {}
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authentication (Wix-account-only; not for third-party apps)
