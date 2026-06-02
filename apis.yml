@@ -17,7 +17,7 @@ tags:
   - Headless
   - Website Builder
 created: '2025-02-08'
-modified: '2026-05-19'
+modified: '2026-05-30'
 url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
@@ -74,6 +74,34 @@ apis:
     properties:
       - type: Documentation
         url: https://dev.wix.com/docs/go-headless
+  - aid: wix:webhooks
+    name: Wix Webhooks
+    description: >-
+      The Wix webhook surface delivers signed JWT events to subscriber URLs
+      registered in the Wix Dev Center. Events cover Stores (products,
+      inventory, collections, variants), eCommerce (cart, checkout, abandoned
+      checkout, orders, order transactions), Bookings v2 (bookings, services,
+      legacy resource/schedule/category notifications), Members and Badges,
+      Contacts v4 (and labels/extended fields), Forms submissions, Pricing
+      Plans (plan and order lifecycle), Events v3 (events, RSVP, orders,
+      reservations, ticket definitions, guests, policies), Blog posts and
+      drafts, Coupons, Loyalty Program accounts and program, and app instance
+      lifecycle. Payloads are JWTs that decode into a common envelope
+      (id, entityFqdn, slug, entityId, eventTime, originatedFrom,
+      triggeredByAnonymizeRequest) plus an event-specific payload.
+    humanURL: https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
+    tags:
+      - Webhooks
+      - AsyncAPI
+      - Events
+    properties:
+      - type: Documentation
+        url: https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
+      - type: Documentation
+        url: https://dev.wix.com/docs/rest/articles/getting-started/webhook-structure
+        title: About the Structure of Webhooks
+      - type: AsyncAPI
+        url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/asyncapi/wix-asyncapi.yml
 common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/wix-com

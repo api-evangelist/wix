@@ -1,0 +1,1628 @@
+asyncapi: 2.6.0
+info:
+  title: Wix Webhooks
+  version: "1.0"
+  description: |
+    AsyncAPI specification for the documented Wix webhook surface. Wix delivers
+    webhook events as signed JSON Web Tokens (JWTs) POSTed to subscriber URLs
+    registered in the Wix Dev Center. The JWT body decodes into a common envelope
+    (id, entityFqdn, slug, entityId, eventTime, originatedFrom,
+    triggeredByAnonymizeRequest) plus an event-specific data payload (actionEvent,
+    createdEvent, updatedEvent or deletedEvent) whose contents depend on the
+    triggering action.
+
+    Channels in this document are addressed by the entityFqdn plus event slug
+    documented for each webhook. Only events that are explicitly documented at
+    dev.wix.com are modeled here. Payload field details beyond the common envelope
+    vary per resource and should be confirmed against the linked Wix documentation
+    page for each event.
+  contact:
+    name: Wix Developer Platform
+    url: https://dev.wix.com/docs/rest
+  license:
+    name: Wix Terms of Service
+    url: https://www.wix.com/about/terms-of-use
+  externalDocs:
+    description: About Wix Webhooks
+    url: https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
+
+defaultContentType: application/jwt
+
+servers:
+  subscriber:
+    url: '{webhookUrl}'
+    protocol: https
+    description: |
+      Subscriber endpoint configured for the Wix app in the Wix Dev Center.
+      Wix POSTs a signed JWT to this URL when a subscribed event fires.
+      Implementations must respond within 1250ms with a 2xx status. Wix retries
+      up to 12 times on failure.
+    variables:
+      webhookUrl:
+        default: https://example.com/wix/webhooks
+        description: Fully-qualified HTTPS endpoint registered as the webhook receiver.
+
+tags:
+  - name: Stores
+    description: Wix Stores catalog, products and inventory webhooks.
+  - name: eCommerce
+    description: Wix eCommerce cart, checkout, orders and transactions webhooks.
+  - name: Bookings
+    description: Wix Bookings v2 bookings and services webhooks.
+  - name: Members
+    description: Wix Members and Members Badges webhooks.
+  - name: Contacts
+    description: Wix Contacts v4 webhooks.
+  - name: Forms
+    description: Wix Forms submission webhooks.
+  - name: PricingPlans
+    description: Wix Pricing Plans plan and order lifecycle webhooks.
+  - name: Events
+    description: Wix Events v3 events, RSVP, orders, ticket definitions and reservation webhooks.
+  - name: Blog
+    description: Wix Blog post and draft post webhooks.
+  - name: Coupons
+    description: Wix Coupons webhooks.
+  - name: Loyalty
+    description: Wix Loyalty Program account and points webhooks.
+  - name: AppManagement
+    description: Wix app instance lifecycle webhooks (install, billing).
+
+channels:
+  # ---------- Stores: Products v3 ----------
+  wix.stores.catalog.v3.product/created:
+    description: A product is created in the Wix Stores v3 catalog.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/stores/catalog-v3/products-v3/product-created
+    subscribe:
+      operationId: onProductCreated
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/ProductCreated'
+
+  wix.stores.catalog.v3.product/updated:
+    description: A product in the Wix Stores v3 catalog is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/stores/catalog-v3/products-v3/product-updated
+    subscribe:
+      operationId: onProductUpdated
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/ProductUpdated'
+
+  wix.stores.catalog.v3.product/deleted:
+    description: A product is deleted from the Wix Stores v3 catalog.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/stores/catalog-v3/products-v3/product-deleted
+    subscribe:
+      operationId: onProductDeleted
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/ProductDeleted'
+
+  # ---------- Stores: Catalog v1 (legacy product/variant/collection notifications) ----------
+  wix.stores.catalog.product/changed:
+    description: Catalog v1 product changed notification (legacy).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-stores/catalog/products/product-changed-webhook
+    subscribe:
+      operationId: onCatalogProductChanged
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/CatalogProductChanged'
+
+  wix.stores.catalog.variants/changed:
+    description: Catalog v1 product variants changed notification (legacy).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-stores/catalog/products/variants-changed-webhook
+    subscribe:
+      operationId: onVariantsChanged
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/VariantsChanged'
+
+  wix.stores.catalog.collection/changed:
+    description: Catalog v1 collection changed notification (legacy).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-stores/catalog/collections/collection-changed-webhook
+    subscribe:
+      operationId: onCollectionChanged
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/CollectionChanged'
+
+  # ---------- Stores: Inventory v1 + v3 ----------
+  wix.stores.inventory.item/changed:
+    description: Catalog v1 inventory item changed notification (legacy).
+    externalDocs:
+      url: https://dev.wix.com/api/rest//wix-stores/inventory/inventory-item-changed-webhook
+    subscribe:
+      operationId: onInventoryItemChanged
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/InventoryItemChanged'
+
+  wix.stores.inventory.variants/changed:
+    description: Catalog v1 inventory variants changed notification (legacy).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-stores/inventory/inventory-variants-changed-webhook
+    subscribe:
+      operationId: onInventoryVariantsChanged
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/InventoryVariantsChanged'
+
+  wix.stores.catalog.v3.inventory_item/updated:
+    description: Catalog v3 inventory item updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/stores/catalog-v3/inventory-items-v3/inventory-item-updated
+    subscribe:
+      operationId: onInventoryItemUpdated
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/InventoryItemUpdated'
+
+  wix.stores.catalog.v3.inventory_item/stock_status_updated:
+    description: Catalog v3 inventory item stock status updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/stores/catalog-v3/inventory-items-v3/inventory-item-stock-status-updated
+    subscribe:
+      operationId: onInventoryItemStockStatusUpdated
+      tags:
+        - name: Stores
+      message:
+        $ref: '#/components/messages/InventoryItemStockStatusUpdated'
+
+  # ---------- eCommerce: Cart ----------
+  wix.ecom.v1.cart/created:
+    description: A cart is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/cart
+    subscribe:
+      operationId: onCartCreated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/CartCreated'
+
+  wix.ecom.v1.cart/deleted:
+    description: A cart is deleted.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/cart
+    subscribe:
+      operationId: onCartDeleted
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/CartDeleted'
+
+  # ---------- eCommerce: Checkout & abandoned checkout ----------
+  wix.ecom.v1.checkout/created:
+    description: A checkout is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-ecommerce/checkout/checkout-created-webhook
+    subscribe:
+      operationId: onCheckoutCreated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/CheckoutCreated'
+
+  wix.ecom.v1.checkout/updated:
+    description: A checkout is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//wix-ecommerce/checkout/checkout-updated-webhook
+    subscribe:
+      operationId: onCheckoutUpdated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/CheckoutUpdated'
+
+  wix.ecom.v1.abandoned_checkout/created:
+    description: An abandoned checkout is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/purchase-flow/checkout/abandoned-checkout/abandoned-checkout-created
+    subscribe:
+      operationId: onAbandonedCheckoutCreated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/AbandonedCheckoutCreated'
+
+  wix.ecom.v1.abandoned_checkout/recovered:
+    description: An abandoned checkout is recovered.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/abandoned-checkout/abandoned-checkout-recovered
+    subscribe:
+      operationId: onAbandonedCheckoutRecovered
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/AbandonedCheckoutRecovered'
+
+  # ---------- eCommerce: Orders ----------
+  wix.ecom.v1.order/created:
+    description: An order is created in the Wix eCommerce system.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/orders/orders/order-created
+    subscribe:
+      operationId: onOrderCreated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderCreated'
+
+  wix.ecom.v1.order/updated:
+    description: An order is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/orders/order-updated
+    subscribe:
+      operationId: onOrderUpdated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderUpdated'
+
+  wix.ecom.v1.order/approved:
+    description: An order is approved.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/e-commerce/orders/orders/order-approved
+    subscribe:
+      operationId: onOrderApproved
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderApproved'
+
+  wix.ecom.v1.order/canceled:
+    description: An order is canceled.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/e-commerce/orders/orders/order-canceled
+    subscribe:
+      operationId: onOrderCanceled
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderCanceled'
+
+  wix.ecom.v1.order/committed:
+    description: An order is committed.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/e-commerce/orders/orders/order-committed
+    subscribe:
+      operationId: onOrderCommitted
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderCommitted'
+
+  wix.ecom.v1.order/fulfilled:
+    description: An order is fulfilled.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/e-commerce/orders/orders/order-fulfilled
+    subscribe:
+      operationId: onOrderFulfilled
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderFulfilled'
+
+  wix.ecom.v1.order/payment_status_updated:
+    description: Payment status on an order is updated (e.g. moved to PAID).
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/api-reference/wix-e-commerce/orders/payment-status-updated
+    subscribe:
+      operationId: onOrderPaymentStatusUpdated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderPaymentStatusUpdated'
+
+  # ---------- eCommerce: Order transactions ----------
+  wix.ecom.v1.order_transactions/updated:
+    description: An order transaction is added or updated (payment or refund).
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/e-commerce/order-transactions/order-transactions-updated
+    subscribe:
+      operationId: onOrderTransactionsUpdated
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderTransactionsUpdated'
+
+  wix.ecom.v1.order_transactions/refund_completed:
+    description: A refund on an order is fully processed and completed.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/e-commerce/orders/order-transactions/order-transactions-refund-completed
+    subscribe:
+      operationId: onOrderTransactionsRefundCompleted
+      tags:
+        - name: eCommerce
+      message:
+        $ref: '#/components/messages/OrderTransactionsRefundCompleted'
+
+  # ---------- Coupons ----------
+  wix.ecommerce.coupons.v2.coupon/created:
+    description: A coupon is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-management/marketing/coupons/coupons/coupon-created
+    subscribe:
+      operationId: onCouponCreated
+      tags:
+        - name: Coupons
+      message:
+        $ref: '#/components/messages/CouponCreated'
+
+  wix.ecommerce.coupons.v2.coupon/updated:
+    description: A coupon is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-management/marketing/coupons/coupons/coupon-updated
+    subscribe:
+      operationId: onCouponUpdated
+      tags:
+        - name: Coupons
+      message:
+        $ref: '#/components/messages/CouponUpdated'
+
+  wix.ecommerce.coupons.v2.coupon/deleted:
+    description: A coupon is deleted.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-management/marketing/coupons/coupons/coupon-deleted
+    subscribe:
+      operationId: onCouponDeleted
+      tags:
+        - name: Coupons
+      message:
+        $ref: '#/components/messages/CouponDeleted'
+
+  # ---------- Bookings v2 ----------
+  wix.bookings.v2.booking/created:
+    description: A booking is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/bookings/bookings-and-time-slots/bookings-v2/bookings-v2-and-confirmation/booking-created
+    subscribe:
+      operationId: onBookingCreated
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/BookingCreated'
+
+  wix.bookings.v2.booking/updated:
+    description: A booking is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/bookings/bookings/bookings-writer-v2/booking-canceled
+    subscribe:
+      operationId: onBookingUpdated
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/BookingUpdated'
+
+  wix.bookings.v2.booking/confirmed:
+    description: A booking is confirmed.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/bookings/bookings-and-time-slots/bookings-v2/bookings-v2-and-confirmation/booking-confirmed
+    subscribe:
+      operationId: onBookingConfirmed
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/BookingConfirmed'
+
+  wix.bookings.v2.booking/canceled:
+    description: A booking is canceled.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/bookings/bookings-and-time-slots/bookings-v2/bookings-v2-and-confirmation/booking-canceled
+    subscribe:
+      operationId: onBookingCanceled
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/BookingCanceled'
+
+  wix.bookings.v2.booking/rescheduled:
+    description: A booking is rescheduled.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/bookings/bookings/bookings-writer-v2/reschedule-booking
+    subscribe:
+      operationId: onBookingRescheduled
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/BookingRescheduled'
+
+  # ---------- Bookings: Services ----------
+  wix.bookings.services.v2.service/created:
+    description: A bookable service is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/bookings/services/services-v2/service-created
+    subscribe:
+      operationId: onServiceCreated
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/ServiceCreated'
+
+  # ---------- Bookings: Resources, Schedule, Category notifications (legacy) ----------
+  wix.bookings.resources/notification:
+    description: Bookings resource notification (legacy resources API).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-bookings/resources/resource-notification-webhook
+    subscribe:
+      operationId: onResourceNotification
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/ResourceNotification'
+
+  wix.bookings.schedule/notification:
+    description: Bookings schedule notification (legacy schedules/sessions API).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-bookings/schedules-and-sessions/schedule/schedule-notification-webhook
+    subscribe:
+      operationId: onScheduleNotification
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/ScheduleNotification'
+
+  wix.bookings.category/notification:
+    description: Bookings category notification (legacy services category API).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-bookings/services/category/category-notification-webhook
+    subscribe:
+      operationId: onCategoryNotification
+      tags:
+        - name: Bookings
+      message:
+        $ref: '#/components/messages/CategoryNotification'
+
+  # ---------- Members ----------
+  wix.members.v1.member/created:
+    description: A member is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/members/members/member-created-webhook
+    subscribe:
+      operationId: onMemberCreated
+      tags:
+        - name: Members
+      message:
+        $ref: '#/components/messages/MemberCreated'
+
+  wix.members.v1.member/updated:
+    description: A member is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/members/members/member-updated-webhook
+    subscribe:
+      operationId: onMemberUpdated
+      tags:
+        - name: Members
+      message:
+        $ref: '#/components/messages/MemberUpdated'
+
+  # ---------- Members: Badges ----------
+  wix.badges.v3.badge/badge_assigned:
+    description: A badge is assigned to a member.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//members/badges/badge-assigned-webhook
+    subscribe:
+      operationId: onBadgeAssigned
+      tags:
+        - name: Members
+      message:
+        $ref: '#/components/messages/BadgeAssigned'
+
+  # ---------- Contacts ----------
+  wix.contacts.v4.contact/created:
+    description: A contact is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/contacts/contacts/contacts-v4/contact-created-webhook
+    subscribe:
+      operationId: onContactCreated
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactCreated'
+
+  wix.contacts.v4.contact/updated:
+    description: A contact is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/contacts/contacts/contacts-v4/contact-updated-webhook
+    subscribe:
+      operationId: onContactUpdated
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactUpdated'
+
+  wix.contacts.v4.contact/deleted:
+    description: A contact is deleted.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//contacts/contacts/contacts-v4/contact-deleted-webhook
+    subscribe:
+      operationId: onContactDeleted
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactDeleted'
+
+  wix.contacts.v4.contact/merged:
+    description: Two or more contacts are merged.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/contacts/contacts/contacts-v4/contact-merged-webhook
+    subscribe:
+      operationId: onContactMerged
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactMerged'
+
+  wix.contacts.labels/contact_label_created:
+    description: A contact label is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/contacts/labels/contact-label-created-webhook
+    subscribe:
+      operationId: onContactLabelCreated
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactLabelCreated'
+
+  wix.contacts.extended_fields/extended_field_created:
+    description: A contact extended field is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/contacts/extended-fields/extended-field-created-webhook
+    subscribe:
+      operationId: onContactExtendedFieldCreated
+      tags:
+        - name: Contacts
+      message:
+        $ref: '#/components/messages/ContactExtendedFieldCreated'
+
+  # ---------- Forms ----------
+  wix.forms.v4.submission/created:
+    description: A form submission is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/crm/forms/form-submissions/submission-created
+    subscribe:
+      operationId: onSubmissionCreated
+      tags:
+        - name: Forms
+      message:
+        $ref: '#/components/messages/SubmissionCreated'
+
+  wix.forms.v4.submission/updated:
+    description: A form submission is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/crm/forms/form-submissions/submission-updated
+    subscribe:
+      operationId: onSubmissionUpdated
+      tags:
+        - name: Forms
+      message:
+        $ref: '#/components/messages/SubmissionUpdated'
+
+  # ---------- Pricing Plans: Plans ----------
+  wix.pricing_plans.plan/created:
+    description: A pricing plan is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-pricing-plans/pricing-plans/plans
+    subscribe:
+      operationId: onPricingPlanCreated
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanCreated'
+
+  wix.pricing_plans.plan/updated:
+    description: A pricing plan is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-pricing-plans/pricing-plans/plans
+    subscribe:
+      operationId: onPricingPlanUpdated
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanUpdated'
+
+  wix.pricing_plans.plan/archived:
+    description: A pricing plan is archived.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-pricing-plans/pricing-plans/plans/archive-plan
+    subscribe:
+      operationId: onPricingPlanArchived
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanArchived'
+
+  # ---------- Pricing Plans: Orders ----------
+  wix.pricing_plans.v2.order/purchased:
+    description: A pricing plan order is purchased (paid in full, first cycle paid, free order created, or offline order created).
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/pricing-plans/pricing-plans/orders/order-purchased
+    subscribe:
+      operationId: onPricingPlanOrderPurchased
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderPurchased'
+
+  wix.pricing_plans.v2.order/started:
+    description: A pricing plan order reaches its start date.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/pricing-plans/pricing-plans/orders
+    subscribe:
+      operationId: onPricingPlanOrderStarted
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderStarted'
+
+  wix.pricing_plans.v2.order/cycle_started:
+    description: A new payment cycle starts for an existing pricing plan order.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/pricing-plans/pricing-plans/orders
+    subscribe:
+      operationId: onPricingPlanOrderCycleStarted
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderCycleStarted'
+
+  wix.pricing_plans.v2.order/canceled:
+    description: A pricing plan order is canceled.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//wix-pricing-plans/pricing-plans/orders/order-canceled-webhook
+    subscribe:
+      operationId: onPricingPlanOrderCanceled
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderCanceled'
+
+  wix.pricing_plans.v2.order/auto_renew_canceled:
+    description: A pricing plan order auto-renewal is canceled (effectiveAt NEXT_PAYMENT_DATE).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-pricing-plans/pricing-plans/orders/order-auto-renew-canceled-webhook
+    subscribe:
+      operationId: onPricingPlanOrderAutoRenewCanceled
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderAutoRenewCanceled'
+
+  wix.pricing_plans.v2.order/ended:
+    description: A pricing plan order ends.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/pricing-plans/pricing-plans/orders/order-ended
+    subscribe:
+      operationId: onPricingPlanOrderEnded
+      tags:
+        - name: PricingPlans
+      message:
+        $ref: '#/components/messages/PricingPlanOrderEnded'
+
+  # ---------- Events: Events v3 ----------
+  wix.events.v3.event/created:
+    description: An event is created (including when a MASTER event is split).
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-management/calendar/events-v3/event-created
+    subscribe:
+      operationId: onEventCreated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventCreated'
+
+  wix.events.v3.event/canceled:
+    description: An event is canceled.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/events/events-v3/event-canceled
+    subscribe:
+      operationId: onEventCanceled
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventCanceled'
+
+  wix.events.v3.event/deleted:
+    description: An event is deleted.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/event/event-deleted-webhook
+    subscribe:
+      operationId: onEventDeleted
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventDeleted'
+
+  wix.events.v3.event/reminder:
+    description: An event reminder is sent.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/event/event-reminder-webhook
+    subscribe:
+      operationId: onEventReminder
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventReminder'
+
+  # ---------- Events: RSVP ----------
+  wix.events.v2.rsvp/created:
+    description: An RSVP is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/rsvp/rsvp-created-webhook
+    subscribe:
+      operationId: onRsvpCreated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/RsvpCreated'
+
+  wix.events.v2.rsvp/updated:
+    description: An RSVP is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/rsvp/rsvp-updated-webhook
+    subscribe:
+      operationId: onRsvpUpdated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/RsvpUpdated'
+
+  wix.events.v2.rsvp/deleted:
+    description: An RSVP is deleted.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/rsvp/rsvp-deleted-webhook
+    subscribe:
+      operationId: onRsvpDeleted
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/RsvpDeleted'
+
+  # ---------- Events: Orders & Reservations ----------
+  wix.events.v2.order/deleted:
+    description: An events order is deleted.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/order/order-deleted-webhook
+    subscribe:
+      operationId: onEventOrderDeleted
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventOrderDeleted'
+
+  wix.events.v2.reservation/created:
+    description: An events checkout order reservation is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/checkout/reservation-created-webhook
+    subscribe:
+      operationId: onEventReservationCreated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventReservationCreated'
+
+  wix.events.v2.reservation/updated:
+    description: An events checkout order reservation is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-events/wix-events/checkout/reservation-updated-webhook
+    subscribe:
+      operationId: onEventReservationUpdated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventReservationUpdated'
+
+  # ---------- Events: Ticket Definitions v3 ----------
+  wix.events.v3.ticket_definition/created:
+    description: A ticket definition is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/events/ticket-definitions-v3/ticket-definition-created
+    subscribe:
+      operationId: onTicketDefinitionCreated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/TicketDefinitionCreated'
+
+  wix.events.v3.ticket_definition/updated:
+    description: A ticket definition is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/events/event-management/ticket-definitions-v3/ticket-definition-updated
+    subscribe:
+      operationId: onTicketDefinitionUpdated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/TicketDefinitionUpdated'
+
+  # ---------- Events: Guests ----------
+  wix.events.event_guests.guest/updated:
+    description: An event guest is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/events/event-guests/event-guest-updated
+    subscribe:
+      operationId: onEventGuestUpdated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventGuestUpdated'
+
+  # ---------- Events: Policies v2 ----------
+  wix.events.v2.policy/updated:
+    description: An events policy is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/api-reference/wix-events/policies-v2/policy-updated
+    subscribe:
+      operationId: onEventPolicyUpdated
+      tags:
+        - name: Events
+      message:
+        $ref: '#/components/messages/EventPolicyUpdated'
+
+  # ---------- Blog ----------
+  wix.blog.v3.post/created:
+    description: A blog post is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//wix-blog/blog/posts/post-created-webhook?branch=spi-rest
+    subscribe:
+      operationId: onBlogPostCreated
+      tags:
+        - name: Blog
+      message:
+        $ref: '#/components/messages/BlogPostCreated'
+
+  wix.blog.v3.draft/created:
+    description: A draft blog post is created.
+    externalDocs:
+      url: https://dev.wix.com/docs/api-reference/business-solutions/blog/draft-posts/draft-post-created
+    subscribe:
+      operationId: onDraftPostCreated
+      tags:
+        - name: Blog
+      message:
+        $ref: '#/components/messages/DraftPostCreated'
+
+  wix.blog.v3.draft/updated:
+    description: A draft blog post is updated.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/business-solutions/blog/draft-posts/draft-post-updated
+    subscribe:
+      operationId: onDraftPostUpdated
+      tags:
+        - name: Blog
+      message:
+        $ref: '#/components/messages/DraftPostUpdated'
+
+  # ---------- Loyalty Program ----------
+  wix.loyalty.v1.account/created:
+    description: A loyalty account is created.
+    externalDocs:
+      url: https://dev.wix.com/api/rest//wix-loyalty-program/accounts/loyalty-account-created-webhook?branch=spi-rest
+    subscribe:
+      operationId: onLoyaltyAccountCreated
+      tags:
+        - name: Loyalty
+      message:
+        $ref: '#/components/messages/LoyaltyAccountCreated'
+
+  wix.loyalty.v1.account/points_updated:
+    description: A loyalty account's points are adjusted, earned or redeemed.
+    externalDocs:
+      url: https://dev.wix.com/docs/rest/api-reference/wix-loyalty-program/accounts/points-updated
+    subscribe:
+      operationId: onLoyaltyAccountPointsUpdated
+      tags:
+        - name: Loyalty
+      message:
+        $ref: '#/components/messages/LoyaltyAccountPointsUpdated'
+
+  wix.loyalty.v1.program/updated:
+    description: A loyalty program configuration is updated.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/wix-loyalty-program/program/loyalty-program-updated-webhook
+    subscribe:
+      operationId: onLoyaltyProgramUpdated
+      tags:
+        - name: Loyalty
+      message:
+        $ref: '#/components/messages/LoyaltyProgramUpdated'
+
+  # ---------- App Management ----------
+  wix.app_management.app_instance/paid_plan_purchased:
+    description: A site owner purchases a paid plan for the app (including starting a free trial).
+    externalDocs:
+      url: https://dev.wix.com/api/rest/app-management/apps/app-instance/paid-plan-purchased-webhook
+    subscribe:
+      operationId: onAppInstancePaidPlanPurchased
+      tags:
+        - name: AppManagement
+      message:
+        $ref: '#/components/messages/AppInstancePaidPlanPurchased'
+
+  wix.app_management.app_instance/paid_plan_changed:
+    description: A paid plan for an app instance is changed.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/app-management/apps/app-instance/paid-plan-changed-webhook
+    subscribe:
+      operationId: onAppInstancePaidPlanChanged
+      tags:
+        - name: AppManagement
+      message:
+        $ref: '#/components/messages/AppInstancePaidPlanChanged'
+
+  wix.app_management.app_instance/paid_plan_auto_renewal_cancelled:
+    description: A user cancels a paid plan or its auto-renewal for an app instance.
+    externalDocs:
+      url: https://dev.wix.com/api/rest/app-management/apps/app-instance/paid-plan-auto-renewal-cancelled-webhook
+    subscribe:
+      operationId: onAppInstancePaidPlanAutoRenewalCancelled
+      tags:
+        - name: AppManagement
+      message:
+        $ref: '#/components/messages/AppInstancePaidPlanAutoRenewalCancelled'
+
+components:
+  messages:
+    # Stores: Products v3
+    ProductCreated:
+      name: ProductCreated
+      title: Product Created
+      summary: A product is created in the Wix Stores v3 catalog.
+      contentType: application/jwt
+      payload:
+        $ref: '#/components/schemas/WixWebhookEnvelopeCreated'
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ProductUpdated:
+      name: ProductUpdated
+      title: Product Updated
+      summary: A product in the Wix Stores v3 catalog is updated.
+      contentType: application/jwt
+      payload:
+        $ref: '#/components/schemas/WixWebhookEnvelopeUpdated'
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ProductDeleted:
+      name: ProductDeleted
+      title: Product Deleted
+      summary: A product is deleted from the Wix Stores v3 catalog.
+      contentType: application/jwt
+      payload:
+        $ref: '#/components/schemas/WixWebhookEnvelopeDeleted'
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Stores: Catalog v1 legacy
+    CatalogProductChanged:
+      name: CatalogProductChanged
+      title: Product Changed (Catalog v1)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    VariantsChanged:
+      name: VariantsChanged
+      title: Variants Changed (Catalog v1)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CollectionChanged:
+      name: CollectionChanged
+      title: Collection Changed (Catalog v1)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Stores: Inventory
+    InventoryItemChanged:
+      name: InventoryItemChanged
+      title: Inventory Item Changed (v1)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    InventoryVariantsChanged:
+      name: InventoryVariantsChanged
+      title: Inventory Variants Changed (v1)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    InventoryItemUpdated:
+      name: InventoryItemUpdated
+      title: Inventory Item Updated (Catalog v3)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    InventoryItemStockStatusUpdated:
+      name: InventoryItemStockStatusUpdated
+      title: Inventory Item Stock Status Updated (Catalog v3)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # eCommerce: Cart & Checkout
+    CartCreated:
+      name: CartCreated
+      title: Cart Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CartDeleted:
+      name: CartDeleted
+      title: Cart Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CheckoutCreated:
+      name: CheckoutCreated
+      title: Checkout Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CheckoutUpdated:
+      name: CheckoutUpdated
+      title: Checkout Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    AbandonedCheckoutCreated:
+      name: AbandonedCheckoutCreated
+      title: Abandoned Checkout Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    AbandonedCheckoutRecovered:
+      name: AbandonedCheckoutRecovered
+      title: Abandoned Checkout Recovered
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # eCommerce: Orders
+    OrderCreated:
+      name: OrderCreated
+      title: Order Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderUpdated:
+      name: OrderUpdated
+      title: Order Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderApproved:
+      name: OrderApproved
+      title: Order Approved
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderCanceled:
+      name: OrderCanceled
+      title: Order Canceled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderCommitted:
+      name: OrderCommitted
+      title: Order Committed
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderFulfilled:
+      name: OrderFulfilled
+      title: Order Fulfilled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderPaymentStatusUpdated:
+      name: OrderPaymentStatusUpdated
+      title: Order Payment Status Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # eCommerce: Order transactions
+    OrderTransactionsUpdated:
+      name: OrderTransactionsUpdated
+      title: Order Transactions Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    OrderTransactionsRefundCompleted:
+      name: OrderTransactionsRefundCompleted
+      title: Order Transactions Refund Completed
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Coupons
+    CouponCreated:
+      name: CouponCreated
+      title: Coupon Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CouponUpdated:
+      name: CouponUpdated
+      title: Coupon Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CouponDeleted:
+      name: CouponDeleted
+      title: Coupon Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Bookings
+    BookingCreated:
+      name: BookingCreated
+      title: Booking Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    BookingUpdated:
+      name: BookingUpdated
+      title: Booking Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    BookingConfirmed:
+      name: BookingConfirmed
+      title: Booking Confirmed
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    BookingCanceled:
+      name: BookingCanceled
+      title: Booking Canceled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    BookingRescheduled:
+      name: BookingRescheduled
+      title: Booking Rescheduled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ServiceCreated:
+      name: ServiceCreated
+      title: Service Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ResourceNotification:
+      name: ResourceNotification
+      title: Resource Notification (legacy)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixLegacyNotification' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ScheduleNotification:
+      name: ScheduleNotification
+      title: Schedule Notification (legacy)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixLegacyNotification' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    CategoryNotification:
+      name: CategoryNotification
+      title: Category Notification (legacy)
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixLegacyNotification' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Members
+    MemberCreated:
+      name: MemberCreated
+      title: Member Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    MemberUpdated:
+      name: MemberUpdated
+      title: Member Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    BadgeAssigned:
+      name: BadgeAssigned
+      title: Badge Assigned
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Contacts
+    ContactCreated:
+      name: ContactCreated
+      title: Contact Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ContactUpdated:
+      name: ContactUpdated
+      title: Contact Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ContactDeleted:
+      name: ContactDeleted
+      title: Contact Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ContactMerged:
+      name: ContactMerged
+      title: Contact Merged
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ContactLabelCreated:
+      name: ContactLabelCreated
+      title: Contact Label Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    ContactExtendedFieldCreated:
+      name: ContactExtendedFieldCreated
+      title: Contact Extended Field Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Forms
+    SubmissionCreated:
+      name: SubmissionCreated
+      title: Form Submission Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    SubmissionUpdated:
+      name: SubmissionUpdated
+      title: Form Submission Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Pricing Plans
+    PricingPlanCreated:
+      name: PricingPlanCreated
+      title: Pricing Plan Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanUpdated:
+      name: PricingPlanUpdated
+      title: Pricing Plan Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanArchived:
+      name: PricingPlanArchived
+      title: Pricing Plan Archived
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderPurchased:
+      name: PricingPlanOrderPurchased
+      title: Pricing Plan Order Purchased
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderStarted:
+      name: PricingPlanOrderStarted
+      title: Pricing Plan Order Started
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderCycleStarted:
+      name: PricingPlanOrderCycleStarted
+      title: Pricing Plan Order Cycle Started
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderCanceled:
+      name: PricingPlanOrderCanceled
+      title: Pricing Plan Order Canceled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderAutoRenewCanceled:
+      name: PricingPlanOrderAutoRenewCanceled
+      title: Pricing Plan Order Auto-Renew Canceled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    PricingPlanOrderEnded:
+      name: PricingPlanOrderEnded
+      title: Pricing Plan Order Ended
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Events
+    EventCreated:
+      name: EventCreated
+      title: Event Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventCanceled:
+      name: EventCanceled
+      title: Event Canceled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventDeleted:
+      name: EventDeleted
+      title: Event Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventReminder:
+      name: EventReminder
+      title: Event Reminder
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    RsvpCreated:
+      name: RsvpCreated
+      title: RSVP Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    RsvpUpdated:
+      name: RsvpUpdated
+      title: RSVP Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    RsvpDeleted:
+      name: RsvpDeleted
+      title: RSVP Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventOrderDeleted:
+      name: EventOrderDeleted
+      title: Event Order Deleted
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeDeleted' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventReservationCreated:
+      name: EventReservationCreated
+      title: Event Reservation Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventReservationUpdated:
+      name: EventReservationUpdated
+      title: Event Reservation Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    TicketDefinitionCreated:
+      name: TicketDefinitionCreated
+      title: Ticket Definition Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    TicketDefinitionUpdated:
+      name: TicketDefinitionUpdated
+      title: Ticket Definition Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventGuestUpdated:
+      name: EventGuestUpdated
+      title: Event Guest Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    EventPolicyUpdated:
+      name: EventPolicyUpdated
+      title: Event Policy Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Blog
+    BlogPostCreated:
+      name: BlogPostCreated
+      title: Blog Post Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    DraftPostCreated:
+      name: DraftPostCreated
+      title: Draft Post Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    DraftPostUpdated:
+      name: DraftPostUpdated
+      title: Draft Post Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # Loyalty
+    LoyaltyAccountCreated:
+      name: LoyaltyAccountCreated
+      title: Loyalty Account Created
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeCreated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    LoyaltyAccountPointsUpdated:
+      name: LoyaltyAccountPointsUpdated
+      title: Loyalty Account Points Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeAction' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    LoyaltyProgramUpdated:
+      name: LoyaltyProgramUpdated
+      title: Loyalty Program Updated
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixWebhookEnvelopeUpdated' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+    # App Management
+    AppInstancePaidPlanPurchased:
+      name: AppInstancePaidPlanPurchased
+      title: App Instance Paid Plan Purchased
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixAppInstanceWebhook' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    AppInstancePaidPlanChanged:
+      name: AppInstancePaidPlanChanged
+      title: App Instance Paid Plan Changed
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixAppInstanceWebhook' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+    AppInstancePaidPlanAutoRenewalCancelled:
+      name: AppInstancePaidPlanAutoRenewalCancelled
+      title: App Instance Paid Plan Auto-Renewal Cancelled
+      contentType: application/jwt
+      payload: { $ref: '#/components/schemas/WixAppInstanceWebhook' }
+      bindings: { http: { $ref: '#/components/messageBindings/WixWebhookHttp' } }
+
+  messageBindings:
+    WixWebhookHttp:
+      http:
+        bindingVersion: '0.2.0'
+        method: POST
+        headers:
+          type: object
+          properties:
+            Content-Type:
+              type: string
+              const: application/jwt
+            Digest:
+              type: string
+              description: Optional digest header used by Wix to assist verification.
+
+  schemas:
+    WixWebhookEnvelope:
+      type: object
+      description: |
+        The decoded body of the JWT delivered by Wix. The raw HTTP body is the JWT
+        string. Once verified and decoded, the payload conforms to this schema.
+        Reference: dev.wix.com webhook structure.
+      required:
+        - id
+        - entityFqdn
+        - slug
+        - eventTime
+      properties:
+        id:
+          type: string
+          description: Unique event ID. Use to deduplicate retried deliveries.
+        entityFqdn:
+          type: string
+          description: Fully qualified domain name of the entity (e.g. wix.ecom.v1.order).
+        slug:
+          type: string
+          description: Event name slug (e.g. created, updated, deleted, purchased).
+        entityId:
+          type: string
+          description: ID of the entity associated with the event.
+        eventTime:
+          type: string
+          format: date-time
+          description: Timestamp at which the event was emitted.
+        originatedFrom:
+          type: string
+          description: Optional. Indicates the action that triggered the event.
+        triggeredByAnonymizeRequest:
+          type: boolean
+          description: True if the event was triggered by a privacy regulation request (e.g. GDPR).
+        actionEvent:
+          type: object
+          description: Present for action events; structure varies per resource and slug.
+          additionalProperties: true
+        createdEvent:
+          type: object
+          description: Present for create events; carries the newly created entity (structure varies per resource).
+          additionalProperties: true
+        updatedEvent:
+          type: object
+          description: Present for update events; carries the updated entity and may include previousEntity / updatedFields (structure varies per resource).
+          additionalProperties: true
+        deletedEvent:
+          type: object
+          description: Present for delete events; may carry the deleted entity (structure varies per resource).
+          additionalProperties: true
+
+    WixWebhookEnvelopeCreated:
+      allOf:
+        - $ref: '#/components/schemas/WixWebhookEnvelope'
+        - type: object
+          properties:
+            slug:
+              type: string
+              const: created
+            createdEvent:
+              type: object
+              description: Carries the newly created entity for the resource indicated by entityFqdn.
+              additionalProperties: true
+
+    WixWebhookEnvelopeUpdated:
+      allOf:
+        - $ref: '#/components/schemas/WixWebhookEnvelope'
+        - type: object
+          properties:
+            slug:
+              type: string
+              const: updated
+            updatedEvent:
+              type: object
+              description: Carries the updated entity and may include previousEntity / updatedFields.
+              additionalProperties: true
+
+    WixWebhookEnvelopeDeleted:
+      allOf:
+        - $ref: '#/components/schemas/WixWebhookEnvelope'
+        - type: object
+          properties:
+            slug:
+              type: string
+              const: deleted
+            deletedEvent:
+              type: object
+              description: May carry the deleted entity for the resource indicated by entityFqdn.
+              additionalProperties: true
+
+    WixWebhookEnvelopeAction:
+      allOf:
+        - $ref: '#/components/schemas/WixWebhookEnvelope'
+        - type: object
+          properties:
+            actionEvent:
+              type: object
+              description: Carries data relevant to the action (e.g. purchased, canceled, fulfilled). Structure varies per resource and slug.
+              additionalProperties: true
+
+    WixLegacyNotification:
+      type: object
+      description: |
+        Legacy Wix webhook envelope used by older endpoints (e.g. resource/schedule/category notifications).
+        Delivered as a signed JWT. Exact payload fields vary; clients should verify the JWT and consult the
+        linked Wix doc for the specific notification.
+      additionalProperties: true
+
+    WixAppInstanceWebhook:
+      type: object
+      description: |
+        Webhook delivered for app-instance lifecycle events. Delivered as a signed JWT.
+        Includes app instance identifiers and the event-specific payload (e.g. purchased plan,
+        new plan, auto-renewal cancellation). See the linked Wix doc for the specific event body.
+      additionalProperties: true
