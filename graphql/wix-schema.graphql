@@ -1,0 +1,2711 @@
+"""
+Wix GraphQL API Schema
+Endpoint: https://www.wixapis.com/graphql
+Developer Preview — subject to change.
+Source: https://www.wix.com/graphql-public-server/docs/
+"""
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+# ──────────────────────────────────────────────
+# ROOT QUERY TYPE
+# ──────────────────────────────────────────────
+
+type Query {
+  # Auth Management
+  authManagementOAuthAppsV1OAuthApp(id: ID!): OAuthApp
+  authManagementOAuthAppsV1OAuthApps(query: QueryV2Input): OAuthAppsResponse
+
+  # Blog
+  blogCategoriesV3Category(id: ID!): BlogCategory
+  blogCategoriesV3Categories(query: QueryV2Input): BlogCategoriesResponse
+  blogPostsV3Post(id: ID!): BlogPost
+  blogPostsV3Posts(query: QueryV2Input): BlogPostsResponse
+  blogTagsV3Tag(id: ID!): BlogTag
+  blogTagsV3Tags(query: QueryV2Input): BlogTagsResponse
+
+  # Bookings
+  bookingsAttendanceV2Attendance(id: ID!): BookingsAttendance
+  bookingsAttendanceV2Attendances(query: QueryV2Input): BookingsAttendancesResponse
+  bookingsBookingPoliciesV1BookingPolicy(id: ID!): BookingPolicy
+  bookingsBookingPoliciesV1BookingPolicies(query: QueryV2Input): BookingPoliciesResponse
+  bookingsServicesV2Service(id: ID!): BookingsService
+  bookingsServicesV2Services(query: QueryV2Input): BookingsServicesResponse
+  bookingsServiceOptionsAndVariantsV1ServiceOptionsAndVariants(serviceId: ID!): ServiceOptionsAndVariants
+  bookingsServiceOptionsAndVariantsList(query: QueryV2Input): ServiceOptionsAndVariantsListResponse
+  bookingsSessionsV1Session(id: ID!): BookingsSession
+  bookingsSessionsV1Sessions(query: QueryV2Input): BookingsSessionsResponse
+
+  # Business Tools
+  businessToolsLocationsV1Location(id: ID!): BusinessLocation
+  businessToolsLocationsV1Locations(query: QueryV2Input): BusinessLocationsResponse
+
+  # CRM
+  crmContactsV4Contact(id: ID!): CrmContact
+  crmExtendedFieldsV4ExtendedField(key: String!): CrmExtendedField
+  crmExtendedFieldsV4Fields(query: QueryV2Input): CrmExtendedFieldsResponse
+  crmLabelsV4ContactLabel(key: String!): CrmLabel
+  crmLabelsV4Labels(query: QueryV2Input): CrmLabelsResponse
+
+  # Data (Cloud CMS)
+  dataItemsV2DataItem(dataCollectionId: String!, id: ID!): DataItem
+  dataItemsV2DataItems(dataCollectionId: String!, query: QueryV2Input): DataItemsResponse
+
+  # Ecom
+  ecomCartV1Cart(id: ID!): EcomCart
+  ecomCurrentCartV1Cart: EcomCart
+  ecomCheckoutV1Checkout(id: ID!): EcomCheckout
+  ecomDiscountRulesV1DiscountRule(id: ID!): EcomDiscountRule
+  ecomDiscountRulesV1DiscountRules(query: QueryV2Input): EcomDiscountRulesResponse
+  ecomOrdersV1Order(id: ID!): EcomOrder
+
+  # Events
+  eventsWixEventsV1Event(id: ID!): WixEvent
+  eventsWixEventsV1Events(query: QueryV2Input): WixEventsResponse
+  eventsPoliciesV2Policy(id: ID!): EventPolicy
+  eventsPoliciesV2Policies(query: QueryV2Input): EventPoliciesResponse
+  eventsScheduleV1ScheduleItem(id: ID!): ScheduleItem
+  eventsScheduleV1Items(query: QueryV2Input): ScheduleItemsResponse
+
+  # Members
+  membersMembersV1Member(id: ID!): SiteMember
+  membersMembersV1Members(query: QueryV2Input): SiteMembersResponse
+
+  # Pricing Plans
+  pricingPlansPlansV2Plan(id: ID!): PricingPlan
+  pricingPlansPlansV2Plans(query: QueryV2Input): PricingPlansResponse
+
+  # Stores
+  storesCollectionsV1Collection(id: ID!): StoreCollection
+  storesCollectionsV1Collections(query: QueryV2Input): StoreCollectionsResponse
+  storesProductsV1Product(id: ID!): StoreProduct
+  storesProductsV1Products(query: QueryV2Input): StoreProductsResponse
+}
+
+# ──────────────────────────────────────────────
+# ROOT MUTATION TYPE
+# ──────────────────────────────────────────────
+
+type Mutation {
+  # Auth Management
+  authManagementOAuthAppsV1CreateOAuthApp(input: CreateOAuthAppInput!): OAuthApp
+  authManagementOAuthAppsV1UpdateOAuthApp(input: UpdateOAuthAppInput!): OAuthApp
+  authManagementOAuthAppsV1DeleteOAuthApp(id: ID!): DeleteOAuthAppResponse
+  authManagementOAuthAppsV1GenerateOAuthAppSecret(id: ID!): GenerateOAuthAppSecretResponse
+
+  # Blog
+  blogTagsV3CreateTag(input: CreateBlogTagInput!): BlogTag
+  blogTagsV3DeleteTag(id: ID!): DeleteBlogTagResponse
+  blogTagsV3GetTagByLabel(label: String!): BlogTag
+  blogTagsV3GetTagBySlug(slug: String!): BlogTag
+  blogCategoriesV3GetCategoryBySlug(slug: String!): BlogCategory
+  blogCategoriesV3ListCategories(query: QueryV2Input): BlogCategoriesResponse
+  blogPostsV3GetPostBySlug(slug: String!): BlogPost
+  blogPostsV3ListPosts(query: QueryV2Input): BlogPostsResponse
+  blogPostsV3GetPostMetrics(id: ID!): BlogPostMetrics
+
+  # Bookings – Attendance
+  bookingsAttendanceV2SetAttendance(input: SetAttendanceInput!): BookingsAttendance
+  bookingsAttendanceV2BulkSetAttendance(input: BulkSetAttendanceInput!): BulkSetAttendanceResponse
+
+  # Bookings – Policies
+  bookingsBookingPoliciesV1CreateBookingPolicy(input: CreateBookingPolicyInput!): BookingPolicy
+  bookingsBookingPoliciesV1UpdateBookingPolicy(input: UpdateBookingPolicyInput!): BookingPolicy
+  bookingsBookingPoliciesV1DeleteBookingPolicy(id: ID!): DeleteBookingPolicyResponse
+  bookingsBookingPoliciesV1SetDefaultBookingPolicy(id: ID!): SetDefaultBookingPolicyResponse
+  bookingsBookingPoliciesV1GetStrictestBookingPolicy(input: GetStrictestBookingPolicyInput!): BookingPolicy
+
+  # Bookings – Services
+  bookingsServicesV2CreateService(input: CreateBookingsServiceInput!): BookingsService
+  bookingsServicesV2UpdateService(input: UpdateBookingsServiceInput!): BookingsService
+  bookingsServicesV2DeleteService(id: ID!): DeleteBookingsServiceResponse
+  bookingsServicesV2BulkDeleteServices(input: BulkDeleteServicesInput!): BulkDeleteServicesResponse
+  bookingsServicesV2BulkUpdateServices(input: BulkUpdateServicesInput!): BulkUpdateServicesResponse
+  bookingsServicesV2CloneService(id: ID!): BookingsService
+  bookingsServicesV2SearchServices(input: SearchServicesInput!): BookingsServicesResponse
+
+  # Business Tools – Locations
+  businessToolsLocationsV1CreateLocation(input: CreateLocationInput!): BusinessLocation
+  businessToolsLocationsV1UpdateLocation(input: UpdateLocationInput!): BusinessLocation
+  businessToolsLocationsV1ArchiveLocation(id: ID!): ArchiveLocationResponse
+  businessToolsLocationsV1SetDefaultLocation(id: ID!): SetDefaultLocationResponse
+  businessToolsLocationsV1BulkCreateLocation(input: BulkCreateLocationInput!): BulkCreateLocationResponse
+
+  # CRM – Contacts
+  crmContactsV4CreateContact(input: CreateContactInput!): CrmContact
+  crmContactsV4UpdateContact(input: UpdateContactInput!): CrmContact
+  crmContactsV4DeleteContact(id: ID!): DeleteContactResponse
+  crmContactsV4LabelContact(input: LabelContactInput!): CrmContact
+  crmContactsV4UnlabelContact(input: UnlabelContactInput!): CrmContact
+  crmContactsV4MergeContacts(input: MergeContactsInput!): CrmContact
+
+  # CRM – Extended Fields
+  crmExtendedFieldsV4FindOrCreateExtendedField(input: FindOrCreateExtendedFieldInput!): CrmExtendedField
+  crmExtendedFieldsV4UpdateExtendedField(input: UpdateExtendedFieldInput!): CrmExtendedField
+  crmExtendedFieldsV4DeleteExtendedField(key: String!): DeleteExtendedFieldResponse
+
+  # CRM – Labels
+  crmLabelsV4FindOrCreateLabel(input: FindOrCreateLabelInput!): CrmLabel
+  crmLabelsV4UpdateLabel(input: UpdateLabelInput!): CrmLabel
+  crmLabelsV4DeleteLabel(key: String!): DeleteLabelResponse
+
+  # Data (Cloud CMS)
+  dataItemsV2InsertDataItem(input: InsertDataItemInput!): DataItem
+  dataItemsV2UpdateDataItem(input: UpdateDataItemInput!): DataItem
+  dataItemsV2SaveDataItem(input: SaveDataItemInput!): DataItem
+  dataItemsV2RemoveDataItem(dataCollectionId: String!, id: ID!): RemoveDataItemResponse
+  dataItemsV2BulkInsertDataItems(input: BulkInsertDataItemsInput!): BulkInsertDataItemsResponse
+  dataItemsV2BulkUpdateDataItems(input: BulkUpdateDataItemsInput!): BulkUpdateDataItemsResponse
+  dataItemsV2BulkSaveDataItems(input: BulkSaveDataItemsInput!): BulkSaveDataItemsResponse
+  dataItemsV2BulkRemoveDataItems(input: BulkRemoveDataItemsInput!): BulkRemoveDataItemsResponse
+  dataItemsV2TruncateDataItems(dataCollectionId: String!): TruncateDataItemsResponse
+  dataItemsV2AggregateDataItems(input: AggregateDataItemsInput!): AggregateDataItemsResponse
+  dataItemsV2CountDataItems(input: CountDataItemsInput!): CountDataItemsResponse
+  dataItemsV2QueryDistinctValues(input: QueryDistinctValuesInput!): QueryDistinctValuesResponse
+  dataItemsV2InsertDataItemReference(input: InsertDataItemReferenceInput!): DataItemReference
+  dataItemsV2RemoveDataItemReference(input: RemoveDataItemReferenceInput!): RemoveDataItemReferenceResponse
+  dataItemsV2BulkInsertDataItemReferences(input: BulkInsertDataItemReferencesInput!): BulkInsertDataItemReferencesResponse
+  dataItemsV2BulkRemoveDataItemReferences(input: BulkRemoveDataItemReferencesInput!): BulkRemoveDataItemReferencesResponse
+  dataItemsV2ReplaceDataItemReferences(input: ReplaceDataItemReferencesInput!): ReplaceDataItemReferencesResponse
+  dataItemsV2IsReferencedDataItem(input: IsReferencedDataItemInput!): IsReferencedDataItemResponse
+  dataItemsV2QueryReferencedDataItems(input: QueryReferencedDataItemsInput!): QueryReferencedDataItemsResponse
+
+  # Ecom – Cart
+  ecomCartV1CreateCart(input: CreateCartInput!): EcomCart
+  ecomCartV1UpdateCart(input: UpdateCartInput!): EcomCart
+  ecomCartV1AddToCart(input: AddToCartInput!): EcomCart
+  ecomCartV1RemoveLineItems(input: RemoveLineItemsInput!): EcomCart
+  ecomCartV1UpdateLineItemsQuantity(input: UpdateLineItemsQuantityInput!): EcomCart
+  ecomCartV1RemoveCoupon(id: ID!): EcomCart
+  ecomCartV1DeleteCart(id: ID!): DeleteCartResponse
+  ecomCartV1CreateCheckout(input: CartCreateCheckoutInput!): EcomCheckout
+  ecomCurrentCartV1AddToCurrentCart(input: AddToCurrentCartInput!): EcomCart
+  ecomCurrentCartV1UpdateCurrentCart(input: UpdateCurrentCartInput!): EcomCart
+  ecomCurrentCartV1RemoveLineItemsFromCurrentCart(input: RemoveLineItemsFromCurrentCartInput!): EcomCart
+  ecomCurrentCartV1RemoveCouponFromCurrentCart: EcomCart
+  ecomCurrentCartV1DeleteCurrentCart: DeleteCartResponse
+  ecomCurrentCartV1CreateCheckoutFromCurrentCart(input: CreateCheckoutFromCurrentCartInput!): EcomCheckout
+
+  # Ecom – Checkout
+  ecomCheckoutV1CreateCheckout(input: CreateCheckoutInput!): EcomCheckout
+  ecomCheckoutV1UpdateCheckout(input: UpdateCheckoutInput!): EcomCheckout
+  ecomCheckoutV1AddToCheckout(input: AddToCheckoutInput!): EcomCheckout
+  ecomCheckoutV1RemoveLineItems(input: CheckoutRemoveLineItemsInput!): EcomCheckout
+  ecomCheckoutV1UpdateLineItemsQuantity(input: CheckoutUpdateLineItemsQuantityInput!): EcomCheckout
+  ecomCheckoutV1RemoveCoupon(input: CheckoutRemoveCouponInput!): EcomCheckout
+  ecomCheckoutV1RemoveGiftCard(input: CheckoutRemoveGiftCardInput!): EcomCheckout
+  ecomCheckoutV1CreateOrder(input: CheckoutCreateOrderInput!): EcomOrder
+  ecomCheckoutV1GetCheckoutUrl(id: ID!): GetCheckoutUrlResponse
+  ecomCheckoutV1MarkCheckoutAsCompleted(id: ID!): MarkCheckoutAsCompletedResponse
+
+  # Ecom – Discount Rules
+  ecomDiscountRulesV1CreateDiscountRule(input: CreateDiscountRuleInput!): EcomDiscountRule
+  ecomDiscountRulesV1UpdateDiscountRule(input: UpdateDiscountRuleInput!): EcomDiscountRule
+  ecomDiscountRulesV1DeleteDiscountRule(id: ID!): DeleteDiscountRuleResponse
+
+  # Ecom – Orders
+  ecomOrdersV1CreateOrder(input: CreateEcomOrderInput!): EcomOrder
+  ecomOrdersV1UpdateOrder(input: UpdateEcomOrderInput!): EcomOrder
+  ecomOrdersV1CancelOrder(input: CancelOrderInput!): EcomOrder
+  ecomOrdersV1AddActivity(input: AddOrderActivityInput!): EcomOrder
+  ecomOrdersV1UpdateActivity(input: UpdateOrderActivityInput!): EcomOrder
+  ecomOrdersV1DeleteActivity(input: DeleteOrderActivityInput!): EcomOrder
+  ecomOrdersV1AggregateOrders(input: AggregateOrdersInput!): AggregateOrdersResponse
+  ecomOrdersV1SearchOrders(input: SearchOrdersInput!): EcomOrdersResponse
+
+  # Ecom – Order Transactions
+  ecomOrderTransactionsV1AddPayments(input: AddPaymentsInput!): AddPaymentsResponse
+  ecomOrderTransactionsV1AddRefund(input: AddRefundInput!): AddRefundResponse
+  ecomOrderTransactionsV1UpdatePaymentStatus(input: UpdatePaymentStatusInput!): UpdatePaymentStatusResponse
+  ecomOrderTransactionsV1BulkUpdatePaymentStatuses(input: BulkUpdatePaymentStatusesInput!): BulkUpdatePaymentStatusesResponse
+
+  # Events
+  eventsWixEventsV1CreateEventV2(input: CreateEventV2Input!): WixEvent
+  eventsWixEventsV1UpdateEvent(input: UpdateEventInput!): WixEvent
+  eventsWixEventsV1DeleteEvent(id: ID!): DeleteEventResponse
+  eventsWixEventsV1CancelEvent(id: ID!): WixEvent
+  eventsWixEventsV1BulkCancelEvents(input: BulkCancelEventsInput!): BulkCancelEventsResponse
+  eventsWixEventsV1BulkDeleteEvents(input: BulkDeleteEventsInput!): BulkDeleteEventsResponse
+  eventsWixEventsV1PublishDraftEvent(id: ID!): WixEvent
+  eventsWixEventsV1CopyEventV2(input: CopyEventV2Input!): WixEvent
+
+  # Events – Policies
+  eventsPoliciesV2CreatePolicy(input: CreateEventPolicyInput!): EventPolicy
+  eventsPoliciesV2UpdatePolicy(input: UpdateEventPolicyInput!): EventPolicy
+  eventsPoliciesV2DeletePolicy(id: ID!): DeleteEventPolicyResponse
+  eventsPoliciesV2ReorderEventPolicies(input: ReorderEventPoliciesInput!): ReorderEventPoliciesResponse
+
+  # Events – Schedule
+  eventsScheduleV1AddScheduleItem(input: AddScheduleItemInput!): ScheduleItem
+  eventsScheduleV1UpdateScheduleItem(input: UpdateScheduleItemInput!): ScheduleItem
+  eventsScheduleV1DeleteScheduleItem(id: ID!): DeleteScheduleItemResponse
+  eventsScheduleV1PublishDraft(eventId: ID!): PublishDraftResponse
+  eventsScheduleV1DiscardDraft(eventId: ID!): DiscardDraftResponse
+  eventsScheduleV1RescheduleDraft(input: RescheduleDraftInput!): RescheduleDraftResponse
+  eventsScheduleBookmarksV1CreateBookmark(input: CreateScheduleBookmarkInput!): ScheduleBookmark
+  eventsScheduleBookmarksV1DeleteBookmark(id: ID!): DeleteScheduleBookmarkResponse
+  eventsScheduleBookmarksV1ListBookmarks(query: QueryV2Input): ListScheduleBookmarksResponse
+
+  # Members
+  membersMembersV1CreateMember(input: CreateMemberInput!): SiteMember
+  membersMembersV1UpdateMember(input: UpdateMemberInput!): SiteMember
+  membersMembersV1DeleteMember(id: ID!): DeleteMemberResponse
+  membersMembersV1ApproveMember(id: ID!): SiteMember
+  membersMembersV1BlockMember(id: ID!): SiteMember
+  membersMembersV1MuteMember(id: ID!): SiteMember
+  membersMembersV1UnmuteMember(id: ID!): SiteMember
+  membersMembersV1BulkApproveMembers(input: BulkApproveMembersInput!): BulkApproveMembersResponse
+  membersMembersV1BulkBlockMembers(input: BulkBlockMembersInput!): BulkBlockMembersResponse
+  membersMembersV1BulkDeleteMembers(input: BulkDeleteMembersInput!): BulkDeleteMembersResponse
+  membersMembersV1DisconnectMember(id: ID!): DisconnectMemberResponse
+  membersMembersV1GetMyMember: SiteMember
+  membersMembersV1UpdateMemberSlug(input: UpdateMemberSlugInput!): SiteMember
+  membersMembersV1JoinCommunity: SiteMember
+  membersMembersV1LeaveCommunity: SiteMember
+
+  # Pricing Plans
+  pricingPlansPlansV2CreatePlan(input: CreatePricingPlanInput!): PricingPlan
+  pricingPlansPlansV2UpdatePlan(input: UpdatePricingPlanInput!): PricingPlan
+  pricingPlansPlansV2ArchivePlan(id: ID!): PricingPlan
+  pricingPlansPlansV2MakePlanPrimary(id: ID!): PricingPlan
+  pricingPlansPlansV2ClearPrimary: ClearPrimaryResponse
+  pricingPlansPlansV2SetPlanVisibility(input: SetPlanVisibilityInput!): PricingPlan
+  pricingPlansPlansV2ArrangePlans(input: ArrangePlansInput!): ArrangePlansResponse
+
+  # Redirects
+  redirectsRedirectsV1CreateRedirectSession(input: CreateRedirectSessionInput!): RedirectSession
+
+  # Stores – Collections
+  storesCollectionsV1CreateCollection(input: CreateStoreCollectionInput!): StoreCollection
+  storesCollectionsV1UpdateCollection(input: UpdateStoreCollectionInput!): StoreCollection
+  storesCollectionsV1DeleteCollection(id: ID!): DeleteStoreCollectionResponse
+  storesCollectionsV1AddProductsToCollection(input: AddProductsToCollectionInput!): AddProductsToCollectionResponse
+  storesCollectionsV1RemoveProductsFromCollection(input: RemoveProductsFromCollectionInput!): RemoveProductsFromCollectionResponse
+
+  # Stores – Products
+  storesProductsV1CreateProduct(input: CreateStoreProductInput!): StoreProduct
+  storesProductsV1UpdateProduct(input: UpdateStoreProductInput!): StoreProduct
+  storesProductsV1DeleteProduct(id: ID!): DeleteStoreProductResponse
+  storesProductsV1BulkUpdateProducts(input: BulkUpdateStoreProductsInput!): BulkUpdateStoreProductsResponse
+  storesProductsV1BulkAdjustProductProperties(input: BulkAdjustProductPropertiesInput!): BulkAdjustProductPropertiesResponse
+  storesProductsV1UpdateVariants(input: UpdateVariantsInput!): UpdateVariantsResponse
+  storesProductsV1ResetAllVariantData(productId: ID!): ResetAllVariantDataResponse
+  storesProductsV1AddProductMedia(input: AddProductMediaInput!): AddProductMediaResponse
+  storesProductsV1RemoveProductMedia(input: RemoveProductMediaInput!): RemoveProductMediaResponse
+  storesProductsV1AddProductMediaToChoices(input: AddProductMediaToChoicesInput!): AddProductMediaToChoicesResponse
+  storesProductsV1RemoveProductMediaFromChoices(input: RemoveProductMediaFromChoicesInput!): RemoveProductMediaFromChoicesResponse
+
+  # Stores – Inventory
+  storesInventoryV2GetInventoryVariants(input: GetInventoryVariantsInput!): GetInventoryVariantsResponse
+  storesInventoryV2UpdateInventoryVariants(input: UpdateInventoryVariantsInput!): UpdateInventoryVariantsResponse
+  storesInventoryV2IncrementInventory(input: IncrementInventoryInput!): IncrementInventoryResponse
+  storesInventoryV2DecrementInventory(input: DecrementInventoryInput!): DecrementInventoryResponse
+  storesInventoryV2QueryInventory(input: QueryInventoryInput!): QueryInventoryResponse
+}
+
+# ──────────────────────────────────────────────
+# COMMON / SHARED TYPES
+# ──────────────────────────────────────────────
+
+"""Standard paging input for offset-based pagination."""
+input PagingInput {
+  limit: Int
+  offset: Int
+}
+
+"""Cursor-based paging input."""
+input CursorPagingInput {
+  limit: Int
+  cursor: String
+}
+
+"""Unified query input used across most list/query endpoints."""
+input QueryV2Input {
+  filter: String
+  sort: [SortingInput!]
+  paging: PagingInput
+  cursorPaging: CursorPagingInput
+  fields: [String!]
+}
+
+input SortingInput {
+  fieldName: String!
+  order: SortOrder
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+type PagingMetadata {
+  count: Int
+  offset: Int
+  total: Int
+  tooManyToCount: Boolean
+  cursors: Cursors
+}
+
+type Cursors {
+  next: String
+  prev: String
+}
+
+type Money {
+  amount: String
+  currency: String
+  formattedAmount: String
+}
+
+input MoneyInput {
+  amount: String!
+  currency: String!
+}
+
+type Image {
+  id: ID
+  url: String
+  height: Int
+  width: Int
+  altText: String
+  filename: String
+}
+
+input ImageInput {
+  id: ID
+  url: String!
+  height: Int
+  width: Int
+  altText: String
+  filename: String
+}
+
+type PageUrl {
+  base: String
+  path: String
+}
+
+type StreetAddress {
+  number: String
+  name: String
+  apt: String
+}
+
+input StreetAddressInput {
+  number: String
+  name: String
+  apt: String
+}
+
+type ApplicationError {
+  code: String
+  description: String
+  data: String
+}
+
+# ──────────────────────────────────────────────
+# AUTH MANAGEMENT
+# ──────────────────────────────────────────────
+
+type OAuthApp {
+  id: ID
+  name: String
+  description: String
+  secret: String
+  allowedRedirectDomains: [String!]
+  allowedRedirectUris: [String!]
+  loginUrl: String
+  createdDate: String
+}
+
+input CreateOAuthAppInput {
+  name: String!
+  description: String
+  allowedRedirectDomains: [String!]
+  allowedRedirectUris: [String!]
+  loginUrl: String
+}
+
+input UpdateOAuthAppInput {
+  id: ID!
+  name: String
+  description: String
+  allowedRedirectDomains: [String!]
+  allowedRedirectUris: [String!]
+  loginUrl: String
+}
+
+type OAuthAppsResponse {
+  apps: [OAuthApp!]
+  pagingMetadata: PagingMetadata
+}
+
+type DeleteOAuthAppResponse {
+  id: ID
+}
+
+type GenerateOAuthAppSecretResponse {
+  secret: String
+}
+
+# ──────────────────────────────────────────────
+# BLOG
+# ──────────────────────────────────────────────
+
+type BlogPost {
+  id: ID
+  title: String
+  excerpt: String
+  content: String
+  coverImage: Image
+  media: Image
+  author: BlogAuthor
+  categories: [BlogCategory!]
+  tags: [BlogTag!]
+  slug: String
+  featured: Boolean
+  pinned: Boolean
+  membersOnly: Boolean
+  language: String
+  publishedDate: String
+  lastPublishedDate: String
+  firstPublishedDate: String
+  viewCount: Int
+  commentCount: Int
+  likeCount: Int
+  status: BlogPostStatus
+}
+
+type BlogAuthor {
+  id: ID
+  authorType: String
+}
+
+type BlogCategory {
+  id: ID
+  label: String
+  title: String
+  description: String
+  coverImage: Image
+  postCount: Int
+  slug: String
+  language: String
+  displayPosition: Int
+}
+
+type BlogTag {
+  id: ID
+  label: String
+  slug: String
+  language: String
+  postCount: Int
+  createdDate: String
+  updatedDate: String
+  publishedDate: String
+}
+
+type BlogPostsResponse {
+  posts: [BlogPost!]
+  pagingMetadata: PagingMetadata
+}
+
+type BlogCategoriesResponse {
+  categories: [BlogCategory!]
+  pagingMetadata: PagingMetadata
+}
+
+type BlogTagsResponse {
+  tags: [BlogTag!]
+  pagingMetadata: PagingMetadata
+}
+
+type BlogPostMetrics {
+  postId: ID
+  likes: Int
+  comments: Int
+  views: Int
+}
+
+input CreateBlogTagInput {
+  tag: BlogTagInput!
+}
+
+input BlogTagInput {
+  label: String!
+  language: String
+}
+
+type DeleteBlogTagResponse {
+  id: ID
+}
+
+enum BlogPostStatus {
+  DRAFT
+  PUBLISHED
+  SCHEDULED
+}
+
+# ──────────────────────────────────────────────
+# BOOKINGS
+# ──────────────────────────────────────────────
+
+type BookingsAttendance {
+  id: ID
+  bookingId: ID
+  sessionId: ID
+  attendanceStatus: BookingsAttendanceV2AttendanceStatus
+  numberOfAttendees: Int
+}
+
+enum BookingsAttendanceV2AttendanceStatus {
+  NOT_SET
+  ATTENDED
+  NOT_ATTENDED
+}
+
+type BookingsService {
+  id: ID
+  name: String
+  description: String
+  type: BookingsServicesV2ServiceTypeEnum
+  category: BookingsCategory
+  media: BookingsMedia
+  locations: [BookingsServiceLocation!]
+  staffMemberIds: [ID!]
+  hidden: Boolean
+  createdDate: String
+  updatedDate: String
+}
+
+enum BookingsServicesV2ServiceTypeEnum {
+  UNKNOWN
+  APPOINTMENT
+  CLASS
+  COURSE
+}
+
+enum BookingsServicesV2LocationTypeEnum {
+  UNKNOWN
+  BUSINESS
+  CUSTOMER
+  CUSTOM
+}
+
+type BookingsCategory {
+  id: ID
+  name: String
+}
+
+type BookingsMedia {
+  coverImage: Image
+  items: [Image!]
+}
+
+type BookingsServiceLocation {
+  type: BookingsServicesV2LocationTypeEnum
+  business: BookingsBusinessLocation
+  custom: BookingsCustomLocation
+}
+
+type BookingsBusinessLocation {
+  id: ID
+  name: String
+}
+
+type BookingsCustomLocation {
+  address: String
+}
+
+type BookingsSession {
+  id: ID
+  serviceId: ID
+  scheduleId: ID
+  location: BookingsServiceLocation
+  start: String
+  end: String
+  capacity: Int
+  remainingCapacity: Int
+  totalNumberOfParticipants: Int
+}
+
+type BookingPolicy {
+  id: ID
+  name: String
+  revision: Int
+  default: Boolean
+  createdDate: String
+  updatedDate: String
+}
+
+type BookingsAttendancesResponse {
+  attendances: [BookingsAttendance!]
+  pagingMetadata: PagingMetadata
+}
+
+type BookingPoliciesResponse {
+  policies: [BookingPolicy!]
+  pagingMetadata: PagingMetadata
+}
+
+type BookingsServicesResponse {
+  services: [BookingsService!]
+  pagingMetadata: PagingMetadata
+}
+
+type BookingsSessionsResponse {
+  sessions: [BookingsSession!]
+  pagingMetadata: PagingMetadata
+}
+
+type ServiceOptionsAndVariants {
+  id: ID
+  serviceId: ID
+}
+
+type ServiceOptionsAndVariantsListResponse {
+  serviceOptionsAndVariants: [ServiceOptionsAndVariants!]
+  pagingMetadata: PagingMetadata
+}
+
+input SetAttendanceInput {
+  bookingId: ID!
+  sessionId: ID!
+  attendanceStatus: BookingsAttendanceV2AttendanceStatus!
+  numberOfAttendees: Int
+}
+
+input BulkSetAttendanceInput {
+  items: [SetAttendanceInput!]!
+}
+
+type BulkSetAttendanceResponse {
+  results: [BookingsAttendance!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input CreateBookingPolicyInput {
+  policy: BookingPolicyInput!
+}
+
+input UpdateBookingPolicyInput {
+  policy: BookingPolicyInput!
+}
+
+input BookingPolicyInput {
+  id: ID
+  name: String
+}
+
+type DeleteBookingPolicyResponse {
+  id: ID
+}
+
+type SetDefaultBookingPolicyResponse {
+  policy: BookingPolicy
+}
+
+input GetStrictestBookingPolicyInput {
+  policyIds: [ID!]!
+}
+
+input CreateBookingsServiceInput {
+  service: BookingsServiceInput!
+}
+
+input UpdateBookingsServiceInput {
+  service: BookingsServiceInput!
+}
+
+input BookingsServiceInput {
+  id: ID
+  name: String!
+  description: String
+  type: BookingsServicesV2ServiceTypeEnum
+}
+
+type DeleteBookingsServiceResponse {
+  id: ID
+}
+
+input BulkDeleteServicesInput {
+  ids: [ID!]!
+}
+
+type BulkDeleteServicesResponse {
+  results: [DeleteBookingsServiceResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkUpdateServicesInput {
+  services: [BookingsServiceInput!]!
+}
+
+type BulkUpdateServicesResponse {
+  results: [BookingsService!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input SearchServicesInput {
+  query: String
+}
+
+type BulkActionMetadata {
+  totalSuccesses: Int
+  totalFailures: Int
+  undetectedDuplicates: Int
+}
+
+# ──────────────────────────────────────────────
+# BUSINESS TOOLS – LOCATIONS
+# ──────────────────────────────────────────────
+
+type BusinessLocation {
+  id: ID
+  name: String
+  description: String
+  phone: String
+  email: String
+  fax: String
+  timezone: String
+  address: BusinessAddress
+  businessSchedule: BusinessSchedule
+  revision: Int
+  status: BusinessLocationStatus
+  isDefault: Boolean
+  locationType: BusinessLocationType
+}
+
+type BusinessAddress {
+  city: String
+  state: String
+  country: String
+  streetAddress: StreetAddress
+  postalCode: String
+  hint: String
+  formatted: String
+}
+
+type BusinessSchedule {
+  periods: [BusinessSchedulePeriod!]
+  specialHourPeriods: [BusinessSpecialHourPeriod!]
+}
+
+type BusinessSchedulePeriod {
+  openDay: DayOfWeek
+  openTime: String
+  closeDay: DayOfWeek
+  closeTime: String
+}
+
+type BusinessSpecialHourPeriod {
+  startDate: String
+  endDate: String
+  isClosed: Boolean
+  comment: String
+}
+
+enum DayOfWeek {
+  MON
+  TUE
+  WED
+  THU
+  FRI
+  SAT
+  SUN
+}
+
+enum BusinessLocationStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum BusinessLocationType {
+  UNKNOWN
+  BRANCH
+  HEADQUARTERS
+  INVENTORY
+  OFFICES
+  OTHER
+}
+
+type BusinessLocationsResponse {
+  locations: [BusinessLocation!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateLocationInput {
+  location: BusinessLocationInput!
+}
+
+input UpdateLocationInput {
+  location: BusinessLocationInput!
+}
+
+input BusinessLocationInput {
+  id: ID
+  name: String!
+}
+
+type ArchiveLocationResponse {
+  location: BusinessLocation
+}
+
+type SetDefaultLocationResponse {
+  location: BusinessLocation
+}
+
+input BulkCreateLocationInput {
+  locations: [BusinessLocationInput!]!
+}
+
+type BulkCreateLocationResponse {
+  results: [BusinessLocation!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+# ──────────────────────────────────────────────
+# CRM – CONTACTS
+# ──────────────────────────────────────────────
+
+type CrmContact {
+  id: ID
+  revision: Int
+  createdDate: String
+  updatedDate: String
+  mergedInto: ID
+  primary: Boolean
+  info: CrmContactInfo
+  source: ContactSource
+}
+
+type CrmContactInfo {
+  name: CrmContactName
+  emails: [CrmContactEmail!]
+  phones: [CrmContactPhone!]
+  addresses: [CrmContactAddress!]
+  company: String
+  jobTitle: String
+  birthdate: String
+  locale: String
+  labelKeys: [String!]
+  extendedFields: CrmExtendedFieldValues
+}
+
+type CrmContactName {
+  first: String
+  last: String
+  middle: String
+  prefix: String
+  suffix: String
+  full: String
+}
+
+type CrmContactEmail {
+  id: ID
+  tag: String
+  email: String
+  primary: Boolean
+}
+
+type CrmContactPhone {
+  id: ID
+  tag: String
+  countryCode: String
+  phone: String
+  e164Phone: String
+  primary: Boolean
+}
+
+type CrmContactAddress {
+  id: ID
+  tag: String
+  address: CrmAddress
+}
+
+type CrmAddress {
+  formatted: String
+  city: String
+  country: String
+  postalCode: String
+  streetAddress: StreetAddress
+  subdivision: String
+  addressLine2: String
+}
+
+type CrmExtendedFieldValues {
+  items: String
+}
+
+type ContactSource {
+  sourceType: String
+  appId: ID
+  wixAppId: String
+}
+
+type CrmExtendedField {
+  key: String
+  displayName: String
+  fieldType: CrmFieldType
+  createdDate: String
+  updatedDate: String
+  namespace: String
+  description: String
+}
+
+enum CrmFieldType {
+  UNKNOWN
+  TEXT
+  NUMBER
+  DATE
+  URL
+  IMAGE
+  BOOLEAN
+  DOCUMENT
+  PHONE
+  EMAIL
+  ADDRESS
+  RICH_TEXT
+  ENCRYPTED_TEXT
+}
+
+type CrmLabel {
+  key: String
+  displayName: String
+  labelType: CrmLabelType
+  createdDate: String
+  updatedDate: String
+  namespace: String
+}
+
+enum CrmLabelType {
+  SYSTEM
+  USER_DEFINED
+  WIX_APP_DEFINED
+}
+
+input CreateContactInput {
+  info: CrmContactInfoInput!
+}
+
+input UpdateContactInput {
+  id: ID!
+  revision: Int!
+  info: CrmContactInfoInput
+}
+
+input CrmContactInfoInput {
+  name: CrmContactNameInput
+  emails: [CrmContactEmailInput!]
+  phones: [CrmContactPhoneInput!]
+  addresses: [CrmContactAddressInput!]
+  company: String
+  jobTitle: String
+  birthdate: String
+  locale: String
+  labelKeys: [String!]
+}
+
+input CrmContactNameInput {
+  first: String
+  last: String
+  middle: String
+  prefix: String
+  suffix: String
+}
+
+input CrmContactEmailInput {
+  tag: String
+  email: String!
+  primary: Boolean
+}
+
+input CrmContactPhoneInput {
+  tag: String
+  countryCode: String
+  phone: String!
+  primary: Boolean
+}
+
+input CrmContactAddressInput {
+  tag: String
+  address: CrmAddressInput
+}
+
+input CrmAddressInput {
+  city: String
+  country: String
+  postalCode: String
+  streetAddress: StreetAddressInput
+  subdivision: String
+  addressLine2: String
+}
+
+type DeleteContactResponse {
+  id: ID
+}
+
+input LabelContactInput {
+  id: ID!
+  labelKeys: [String!]!
+}
+
+input UnlabelContactInput {
+  id: ID!
+  labelKeys: [String!]!
+}
+
+input MergeContactsInput {
+  targetContactId: ID!
+  sourceContactIds: [ID!]!
+}
+
+type CrmExtendedFieldsResponse {
+  fields: [CrmExtendedField!]
+  pagingMetadata: PagingMetadata
+}
+
+input FindOrCreateExtendedFieldInput {
+  displayName: String!
+  dataType: CrmFieldType!
+}
+
+input UpdateExtendedFieldInput {
+  key: String!
+  displayName: String
+}
+
+type DeleteExtendedFieldResponse {
+  key: String
+}
+
+type CrmLabelsResponse {
+  labels: [CrmLabel!]
+  pagingMetadata: PagingMetadata
+}
+
+input FindOrCreateLabelInput {
+  displayName: String!
+}
+
+input UpdateLabelInput {
+  key: String!
+  displayName: String!
+}
+
+type DeleteLabelResponse {
+  key: String
+}
+
+# ──────────────────────────────────────────────
+# DATA (CLOUD CMS / DATA COLLECTIONS)
+# ──────────────────────────────────────────────
+
+type DataItem {
+  id: ID
+  dataCollectionId: String
+  data: String
+  createdDate: String
+  updatedDate: String
+}
+
+type DataItemReference {
+  referringItemId: ID
+  referringItemFieldName: String
+  referencedItemId: ID
+}
+
+type DataItemsResponse {
+  dataItems: [DataItem!]
+  pagingMetadata: PagingMetadata
+}
+
+input InsertDataItemInput {
+  dataCollectionId: String!
+  dataItem: DataItemInput!
+}
+
+input UpdateDataItemInput {
+  dataCollectionId: String!
+  dataItem: DataItemInput!
+}
+
+input SaveDataItemInput {
+  dataCollectionId: String!
+  dataItem: DataItemInput!
+}
+
+input DataItemInput {
+  id: ID
+  data: String!
+}
+
+type RemoveDataItemResponse {
+  id: ID
+}
+
+input BulkInsertDataItemsInput {
+  dataCollectionId: String!
+  dataItems: [DataItemInput!]!
+  returnEntity: Boolean
+}
+
+type BulkInsertDataItemsResponse {
+  results: [DataItem!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkUpdateDataItemsInput {
+  dataCollectionId: String!
+  dataItems: [DataItemInput!]!
+  returnEntity: Boolean
+}
+
+type BulkUpdateDataItemsResponse {
+  results: [DataItem!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkSaveDataItemsInput {
+  dataCollectionId: String!
+  dataItems: [DataItemInput!]!
+  returnEntity: Boolean
+}
+
+type BulkSaveDataItemsResponse {
+  results: [DataItem!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkRemoveDataItemsInput {
+  dataCollectionId: String!
+  dataItemIds: [ID!]!
+}
+
+type BulkRemoveDataItemsResponse {
+  results: [RemoveDataItemResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+type TruncateDataItemsResponse {
+  jobId: String
+}
+
+input AggregateDataItemsInput {
+  dataCollectionId: String!
+  initialFilter: String
+  aggregation: String
+  finalFilter: String
+  sort: [SortingInput!]
+  paging: PagingInput
+  cursorPaging: CursorPagingInput
+  returnTotalCount: Boolean
+  consistentRead: Boolean
+}
+
+type AggregateDataItemsResponse {
+  results: [String!]
+  pagingMetadata: PagingMetadata
+}
+
+input CountDataItemsInput {
+  dataCollectionId: String!
+  filter: String
+  consistentRead: Boolean
+}
+
+type CountDataItemsResponse {
+  totalCount: Int
+}
+
+input QueryDistinctValuesInput {
+  dataCollectionId: String!
+  fieldName: String!
+  filter: String
+  order: SortOrder
+  paging: PagingInput
+  cursorPaging: CursorPagingInput
+  consistentRead: Boolean
+}
+
+type QueryDistinctValuesResponse {
+  distinctValues: [String!]
+  pagingMetadata: PagingMetadata
+}
+
+input InsertDataItemReferenceInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  referringItemId: ID!
+  referencedItemId: ID!
+}
+
+input RemoveDataItemReferenceInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  referringItemId: ID!
+  referencedItemId: ID!
+}
+
+type RemoveDataItemReferenceResponse {
+  referringItemId: ID
+}
+
+input BulkInsertDataItemReferencesInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  references: [DataItemReferenceInput!]!
+}
+
+input DataItemReferenceInput {
+  referringItemId: ID!
+  referencedItemId: ID!
+}
+
+type BulkInsertDataItemReferencesResponse {
+  results: [DataItemReference!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkRemoveDataItemReferencesInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  references: [DataItemReferenceInput!]!
+}
+
+type BulkRemoveDataItemReferencesResponse {
+  results: [RemoveDataItemReferenceResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input ReplaceDataItemReferencesInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  referringItemId: ID!
+  referencedItemIds: [ID!]!
+}
+
+type ReplaceDataItemReferencesResponse {
+  references: [DataItemReference!]
+}
+
+input IsReferencedDataItemInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  referringItemId: ID!
+  referencedItemId: ID!
+}
+
+type IsReferencedDataItemResponse {
+  isReferenced: Boolean
+}
+
+input QueryReferencedDataItemsInput {
+  dataCollectionId: String!
+  referringItemFieldName: String!
+  referringItemId: ID!
+  returnFullItems: Boolean
+  paging: PagingInput
+  cursorPaging: CursorPagingInput
+}
+
+type QueryReferencedDataItemsResponse {
+  results: [DataItem!]
+  pagingMetadata: PagingMetadata
+}
+
+# ──────────────────────────────────────────────
+# ECOM – CART
+# ──────────────────────────────────────────────
+
+type EcomCart {
+  id: ID
+  lineItems: [EcomLineItem!]
+  appliedDiscounts: [EcomAppliedDiscount!]
+  shippingInfo: EcomShippingInfo
+  buyerInfo: EcomBuyerInfo
+  currency: String
+  conversionCurrency: String
+  taxIncludedInPrices: Boolean
+  weightUnit: String
+  subtotal: Money
+  createdDate: String
+  updatedDate: String
+  abandonedCartUrl: String
+}
+
+type EcomLineItem {
+  id: ID
+  quantity: Int
+  catalogReference: CatalogReference
+  productName: EcomProductName
+  price: Money
+  fullPrice: Money
+  discount: Money
+  taxDetails: EcomTaxDetails
+}
+
+type CatalogReference {
+  catalogItemId: ID
+  appId: ID
+  options: String
+}
+
+type EcomProductName {
+  original: String
+  translated: String
+}
+
+type EcomTaxDetails {
+  taxableAmount: Money
+  taxRate: String
+  totalTax: Money
+}
+
+type EcomAppliedDiscount {
+  discountType: String
+  lineItemIds: [ID!]
+  coupon: EcomCoupon
+}
+
+type EcomCoupon {
+  id: ID
+  code: String
+  amount: Money
+  name: String
+}
+
+type EcomShippingInfo {
+  selectedCarrierServiceOption: String
+}
+
+type EcomBuyerInfo {
+  memberId: ID
+  visitorId: ID
+  contactId: ID
+  email: String
+}
+
+input CreateCartInput {
+  lineItems: [EcomLineItemInput!]
+  couponCode: String
+  buyerNote: String
+}
+
+input UpdateCartInput {
+  id: ID!
+  couponCode: String
+  buyerNote: String
+}
+
+input AddToCartInput {
+  id: ID!
+  lineItems: [EcomLineItemInput!]!
+}
+
+input EcomLineItemInput {
+  quantity: Int!
+  catalogReference: CatalogReferenceInput!
+}
+
+input CatalogReferenceInput {
+  catalogItemId: ID!
+  appId: ID!
+  options: String
+}
+
+input RemoveLineItemsInput {
+  id: ID!
+  lineItemIds: [ID!]!
+}
+
+input UpdateLineItemsQuantityInput {
+  id: ID!
+  lineItems: [LineItemQuantityInput!]!
+}
+
+input LineItemQuantityInput {
+  id: ID!
+  quantity: Int!
+}
+
+type DeleteCartResponse {
+  id: ID
+}
+
+input CartCreateCheckoutInput {
+  cartId: ID!
+  channelType: String
+}
+
+input AddToCurrentCartInput {
+  lineItems: [EcomLineItemInput!]!
+}
+
+input UpdateCurrentCartInput {
+  couponCode: String
+  buyerNote: String
+}
+
+input RemoveLineItemsFromCurrentCartInput {
+  lineItemIds: [ID!]!
+}
+
+input CreateCheckoutFromCurrentCartInput {
+  channelType: String
+}
+
+# ──────────────────────────────────────────────
+# ECOM – CHECKOUT
+# ──────────────────────────────────────────────
+
+type EcomCheckout {
+  id: ID
+  lineItems: [EcomLineItem!]
+  billingInfo: EcomAddressDetails
+  shippingInfo: EcomShippingInfo
+  buyerInfo: EcomBuyerInfo
+  currency: String
+  taxIncludedInPrices: Boolean
+  weightUnit: String
+  subtotal: Money
+  total: Money
+  createdDate: String
+  updatedDate: String
+}
+
+type EcomAddressDetails {
+  address: CrmAddress
+  contactDetails: EcomContactDetails
+}
+
+type EcomContactDetails {
+  firstName: String
+  lastName: String
+  phone: String
+  company: String
+  taxInfo: EcomVatId
+}
+
+type EcomVatId {
+  id: String
+  type: String
+}
+
+input CreateCheckoutInput {
+  lineItems: [EcomLineItemInput!]
+  channelType: String
+  couponCode: String
+}
+
+input UpdateCheckoutInput {
+  id: ID!
+  couponCode: String
+}
+
+input AddToCheckoutInput {
+  id: ID!
+  lineItems: [EcomLineItemInput!]!
+}
+
+input CheckoutRemoveLineItemsInput {
+  id: ID!
+  lineItemIds: [ID!]!
+}
+
+input CheckoutUpdateLineItemsQuantityInput {
+  id: ID!
+  lineItems: [LineItemQuantityInput!]!
+}
+
+input CheckoutRemoveCouponInput {
+  id: ID!
+}
+
+input CheckoutRemoveGiftCardInput {
+  id: ID!
+}
+
+input CheckoutCreateOrderInput {
+  id: ID!
+}
+
+type GetCheckoutUrlResponse {
+  checkoutUrl: String
+}
+
+type MarkCheckoutAsCompletedResponse {
+  checkout: EcomCheckout
+}
+
+# ──────────────────────────────────────────────
+# ECOM – DISCOUNT RULES
+# ──────────────────────────────────────────────
+
+type EcomDiscountRule {
+  id: ID
+  name: String
+  status: EcomDiscountRuleStatus
+  triggerType: String
+  active: Boolean
+  createdDate: String
+  updatedDate: String
+}
+
+enum EcomDiscountRuleStatus {
+  ACTIVE
+  EXPIRED
+  PENDING
+  DISABLED
+}
+
+type EcomDiscountRulesResponse {
+  discountRules: [EcomDiscountRule!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateDiscountRuleInput {
+  name: String!
+  active: Boolean
+}
+
+input UpdateDiscountRuleInput {
+  id: ID!
+  name: String
+  active: Boolean
+}
+
+type DeleteDiscountRuleResponse {
+  id: ID
+}
+
+# ──────────────────────────────────────────────
+# ECOM – ORDERS
+# ──────────────────────────────────────────────
+
+type EcomOrder {
+  id: ID
+  number: String
+  createdDate: String
+  updatedDate: String
+  lineItems: [EcomOrderLineItem!]
+  buyerInfo: EcomBuyerInfo
+  billingInfo: EcomAddressDetails
+  shippingInfo: EcomOrderShippingInfo
+  paymentStatus: EcomPaymentStatus
+  fulfillmentStatus: EcomFulfillmentStatus
+  currency: String
+  totals: EcomOrderTotals
+  activities: [EcomOrderActivity!]
+  channelInfo: EcomChannelInfo
+  externalAppInfo: EcomExternalAppInfo
+}
+
+type EcomOrderLineItem {
+  id: ID
+  quantity: Int
+  catalogReference: CatalogReference
+  productName: EcomProductName
+  price: Money
+  totalDiscount: Money
+  refundQuantity: Int
+  fulfillmentStatus: EcomFulfillmentStatus
+}
+
+type EcomOrderShippingInfo {
+  carrierId: ID
+  code: String
+  title: String
+  delivery: EcomDelivery
+  cost: EcomShippingCost
+}
+
+type EcomDelivery {
+  deliveryTime: String
+  estimatedDeliveryTime: String
+  pickupDetails: EcomPickupDetails
+}
+
+type EcomPickupDetails {
+  address: CrmAddress
+  buyerDetails: EcomPickupBuyerDetails
+}
+
+type EcomPickupBuyerDetails {
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+}
+
+type EcomShippingCost {
+  price: Money
+  discount: Money
+}
+
+type EcomOrderTotals {
+  subtotal: Money
+  shipping: Money
+  tax: Money
+  discount: Money
+  total: Money
+  giftCard: Money
+  paidByGiftcard: Money
+}
+
+type EcomOrderActivity {
+  id: ID
+  createdDate: String
+  type: String
+  author: String
+  message: String
+}
+
+type EcomChannelInfo {
+  type: String
+}
+
+type EcomExternalAppInfo {
+  appId: ID
+  externalOrderId: ID
+  externalOrderUrl: String
+}
+
+enum EcomPaymentStatus {
+  UNSPECIFIED
+  NOT_PAID
+  PAID
+  PARTIALLY_REFUNDED
+  FULLY_REFUNDED
+  PENDING
+  PARTIALLY_PAID
+}
+
+enum EcomFulfillmentStatus {
+  NOT_FULFILLED
+  FULFILLED
+  CANCELED
+  PARTIALLY_FULFILLED
+}
+
+type EcomOrdersResponse {
+  orders: [EcomOrder!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateEcomOrderInput {
+  order: EcomOrderInput!
+}
+
+input UpdateEcomOrderInput {
+  id: ID!
+  order: EcomOrderInput!
+}
+
+input EcomOrderInput {
+  id: ID
+  lineItems: [EcomLineItemInput!]
+}
+
+input CancelOrderInput {
+  id: ID!
+  suppressMerchantEmail: Boolean
+}
+
+input AddOrderActivityInput {
+  orderId: ID!
+  activity: EcomOrderActivityInput!
+}
+
+input UpdateOrderActivityInput {
+  orderId: ID!
+  activityId: ID!
+  activity: EcomOrderActivityInput!
+}
+
+input DeleteOrderActivityInput {
+  orderId: ID!
+  activityId: ID!
+}
+
+input EcomOrderActivityInput {
+  type: String!
+  message: String
+}
+
+input AggregateOrdersInput {
+  filter: String
+  aggregation: String
+}
+
+type AggregateOrdersResponse {
+  results: [String!]
+}
+
+input SearchOrdersInput {
+  search: String
+  query: QueryV2Input
+}
+
+input AddPaymentsInput {
+  orderId: ID!
+  payments: [EcomPaymentInput!]!
+}
+
+input EcomPaymentInput {
+  amount: MoneyInput!
+  type: String!
+}
+
+type AddPaymentsResponse {
+  orderId: ID
+}
+
+input AddRefundInput {
+  orderId: ID!
+  refund: EcomRefundInput!
+}
+
+input EcomRefundInput {
+  amount: MoneyInput!
+  reason: String
+}
+
+type AddRefundResponse {
+  orderId: ID
+}
+
+input UpdatePaymentStatusInput {
+  orderId: ID!
+  paymentId: ID!
+  status: String!
+}
+
+type UpdatePaymentStatusResponse {
+  orderId: ID
+}
+
+input BulkUpdatePaymentStatusesInput {
+  paymentAmendments: [PaymentAmendmentInput!]!
+}
+
+input PaymentAmendmentInput {
+  orderId: ID!
+  paymentId: ID!
+  status: String!
+}
+
+type BulkUpdatePaymentStatusesResponse {
+  results: [UpdatePaymentStatusResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+# ──────────────────────────────────────────────
+# EVENTS
+# ──────────────────────────────────────────────
+
+type WixEvent {
+  id: ID
+  title: String
+  description: String
+  slug: String
+  language: String
+  timeZoneId: String
+  scheduling: EventScheduling
+  location: EventLocation
+  registration: EventRegistration
+  mainImage: Image
+  calendarLinks: EventCalendarLinks
+  status: WixEventStatus
+  createdDate: String
+  updatedDate: String
+}
+
+type EventScheduling {
+  config: EventSchedulingConfig
+  formatted: String
+  openingHoursText: String
+}
+
+type EventSchedulingConfig {
+  startDate: String
+  endDate: String
+  timeZoneId: String
+  schedulingType: String
+}
+
+type EventLocation {
+  name: String
+  type: EventLocationType
+  address: CrmAddress
+  tbd: String
+}
+
+enum EventLocationType {
+  VENUE
+  ONLINE
+  TBD
+}
+
+type EventRegistration {
+  status: EventRegistrationStatus
+  type: EventRegistrationType
+  rsvpCollection: EventRsvpCollection
+  ticketing: EventTicketing
+  externalRegistration: EventExternalRegistration
+  initialType: EventRegistrationType
+}
+
+enum EventRegistrationStatus {
+  OPENED
+  CLOSED
+  CLOSED_MANUALLY
+  WAITING_LIST
+}
+
+enum EventRegistrationType {
+  RSVP
+  TICKETS
+  EXTERNAL
+  NONE
+}
+
+type EventRsvpCollection {
+  id: ID
+  rsvpStatusOptions: EventRsvpStatusOptions
+  guestListPubliclyVisible: Boolean
+}
+
+type EventRsvpStatusOptions {
+  waitlistEnabled: Boolean
+  limit: Int
+  waitlistLimit: Int
+}
+
+type EventTicketing {
+  lowestTicketPricing: EventTicketPricing
+}
+
+type EventTicketPricing {
+  type: String
+  minPrice: Money
+}
+
+type EventExternalRegistration {
+  registration: String
+}
+
+type EventCalendarLinks {
+  google: String
+  ics: String
+}
+
+enum WixEventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELED
+}
+
+type WixEventsResponse {
+  events: [WixEvent!]
+  pagingMetadata: PagingMetadata
+}
+
+type EventPolicy {
+  id: ID
+  revision: Int
+  name: String
+  body: String
+  createdDate: String
+  updatedDate: String
+}
+
+type EventPoliciesResponse {
+  policies: [EventPolicy!]
+  pagingMetadata: PagingMetadata
+}
+
+type ScheduleItem {
+  id: ID
+  eventId: ID
+  name: String
+  startDate: String
+  endDate: String
+  timeZoneId: String
+  description: String
+  tags: [String!]
+  location: EventLocation
+  draft: Boolean
+  stage: String
+  status: ScheduleItemStatus
+}
+
+enum ScheduleItemStatus {
+  PUBLISHED
+  DRAFT
+  CANCELED
+}
+
+type ScheduleItemsResponse {
+  items: [ScheduleItem!]
+  pagingMetadata: PagingMetadata
+}
+
+type ScheduleBookmark {
+  memberId: ID
+  scheduleItemId: ID
+}
+
+type ListScheduleBookmarksResponse {
+  items: [ScheduleBookmark!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateEventV2Input {
+  event: WixEventInput!
+}
+
+input UpdateEventInput {
+  id: ID!
+  event: WixEventInput!
+}
+
+input WixEventInput {
+  title: String!
+  description: String
+  language: String
+}
+
+type DeleteEventResponse {
+  id: ID
+}
+
+input BulkCancelEventsInput {
+  eventIds: [ID!]!
+}
+
+type BulkCancelEventsResponse {
+  results: [WixEvent!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkDeleteEventsInput {
+  eventIds: [ID!]!
+}
+
+type BulkDeleteEventsResponse {
+  results: [DeleteEventResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input CopyEventV2Input {
+  eventId: ID!
+}
+
+input CreateEventPolicyInput {
+  eventId: ID!
+  policy: EventPolicyInput!
+}
+
+input UpdateEventPolicyInput {
+  id: ID!
+  revision: Int!
+  policy: EventPolicyInput!
+}
+
+input EventPolicyInput {
+  name: String!
+  body: String!
+}
+
+type DeleteEventPolicyResponse {
+  id: ID
+}
+
+input ReorderEventPoliciesInput {
+  eventId: ID!
+  policyId: ID!
+  beforePolicyId: ID
+  afterPolicyId: ID
+}
+
+type ReorderEventPoliciesResponse {
+  policies: [EventPolicy!]
+}
+
+input AddScheduleItemInput {
+  eventId: ID!
+  item: ScheduleItemInput!
+}
+
+input UpdateScheduleItemInput {
+  id: ID!
+  item: ScheduleItemInput!
+}
+
+input ScheduleItemInput {
+  name: String!
+  startDate: String!
+  endDate: String!
+  timeZoneId: String
+  description: String
+}
+
+type DeleteScheduleItemResponse {
+  id: ID
+}
+
+type PublishDraftResponse {
+  eventId: ID
+}
+
+type DiscardDraftResponse {
+  eventId: ID
+}
+
+input RescheduleDraftInput {
+  eventId: ID!
+  startDate: String
+  endDate: String
+  timeZoneId: String
+  location: EventLocation
+}
+
+type RescheduleDraftResponse {
+  event: WixEvent
+}
+
+input CreateScheduleBookmarkInput {
+  memberId: ID!
+  scheduleItemId: ID!
+}
+
+type DeleteScheduleBookmarkResponse {
+  memberId: ID
+  scheduleItemId: ID
+}
+
+# ──────────────────────────────────────────────
+# MEMBERS
+# ──────────────────────────────────────────────
+
+type SiteMember {
+  id: ID
+  loginEmail: String
+  contactId: ID
+  status: MemberStatus
+  privacyStatus: MemberPrivacyStatus
+  activityStatus: MemberActivityStatus
+  createdDate: String
+  updatedDate: String
+  lastLoginDate: String
+  profile: MemberProfile
+  contact: CrmContactInfo
+}
+
+type MemberProfile {
+  nickname: String
+  slug: String
+  photo: Image
+  title: String
+  cover: Image
+}
+
+enum MemberStatus {
+  PENDING
+  APPROVED
+  BLOCKED
+  OFFLINE
+  UNKNOWN
+}
+
+enum MemberPrivacyStatus {
+  PUBLIC
+  PRIVATE
+  UNKNOWN
+}
+
+enum MemberActivityStatus {
+  ACTIVE
+  MUTED
+  UNKNOWN
+}
+
+type SiteMembersResponse {
+  members: [SiteMember!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateMemberInput {
+  email: String!
+}
+
+input UpdateMemberInput {
+  id: ID!
+  member: MemberUpdateInput!
+}
+
+input MemberUpdateInput {
+  profile: MemberProfileInput
+}
+
+input MemberProfileInput {
+  nickname: String
+  title: String
+}
+
+type DeleteMemberResponse {
+  id: ID
+}
+
+input BulkApproveMembersInput {
+  memberIds: [ID!]!
+}
+
+type BulkApproveMembersResponse {
+  results: [SiteMember!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkBlockMembersInput {
+  memberIds: [ID!]!
+}
+
+type BulkBlockMembersResponse {
+  results: [SiteMember!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkDeleteMembersInput {
+  memberIds: [ID!]!
+}
+
+type BulkDeleteMembersResponse {
+  results: [DeleteMemberResponse!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+type DisconnectMemberResponse {
+  id: ID
+}
+
+input UpdateMemberSlugInput {
+  id: ID!
+  slug: String!
+}
+
+# ──────────────────────────────────────────────
+# PRICING PLANS
+# ──────────────────────────────────────────────
+
+type PricingPlan {
+  id: ID
+  name: String
+  description: String
+  tagLine: String
+  price: Money
+  pricing: PlanPricing
+  perks: PlanPerks
+  visible: Boolean
+  archived: Boolean
+  primary: Boolean
+  createdDate: String
+  updatedDate: String
+  slug: String
+}
+
+type PlanPricing {
+  subscription: PlanSubscription
+  singlePaymentForDuration: PlanDuration
+  singlePaymentUnlimited: Boolean
+}
+
+type PlanSubscription {
+  cycleCount: Int
+  cycleDuration: PlanDuration
+}
+
+type PlanDuration {
+  count: Int
+  unit: PlanDurationUnit
+}
+
+enum PlanDurationUnit {
+  DAY
+  WEEK
+  MONTH
+  YEAR
+}
+
+type PlanPerks {
+  values: [String!]
+}
+
+type PricingPlansResponse {
+  plans: [PricingPlan!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreatePricingPlanInput {
+  plan: PricingPlanInput!
+}
+
+input UpdatePricingPlanInput {
+  id: ID!
+  plan: PricingPlanInput!
+}
+
+input PricingPlanInput {
+  name: String!
+  description: String
+  tagLine: String
+  price: MoneyInput
+}
+
+type ClearPrimaryResponse {
+  planId: ID
+}
+
+input SetPlanVisibilityInput {
+  id: ID!
+  visible: Boolean!
+}
+
+input ArrangePlansInput {
+  ids: [ID!]!
+}
+
+type ArrangePlansResponse {
+  plans: [PricingPlan!]
+}
+
+# ──────────────────────────────────────────────
+# REDIRECTS
+# ──────────────────────────────────────────────
+
+type RedirectSession {
+  id: ID
+  fullUrl: String
+  shortUrl: String
+}
+
+input CreateRedirectSessionInput {
+  postLoginUrl: String
+  postLogoutUrl: String
+  auth: RedirectSessionAuthParams
+}
+
+input RedirectSessionAuthParams {
+  authRequest: OAuthAuthRequest
+}
+
+input OAuthAuthRequest {
+  redirectUri: String
+  responseType: String
+  scope: String
+  state: String
+  codeChallenge: String
+  codeChallengeMethod: String
+}
+
+# ──────────────────────────────────────────────
+# STORES – COLLECTIONS
+# ──────────────────────────────────────────────
+
+type StoreCollection {
+  id: ID
+  name: String
+  description: String
+  slug: String
+  media: StoreCollectionMedia
+  visible: Boolean
+  numberOfProducts: Int
+  productIds: [ID!]
+}
+
+type StoreCollectionMedia {
+  mainMedia: StoreMediaItem
+  items: [StoreMediaItem!]
+}
+
+type StoreMediaItem {
+  mediaType: StoreMediaType
+  title: String
+  image: Image
+  video: StoreVideo
+}
+
+enum StoreMediaType {
+  unspecified_media_type
+  image
+  video
+}
+
+type StoreVideo {
+  id: ID
+  url: String
+  duration: Int
+}
+
+type StoreCollectionsResponse {
+  collections: [StoreCollection!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateStoreCollectionInput {
+  collection: StoreCollectionInput!
+}
+
+input UpdateStoreCollectionInput {
+  id: ID!
+  collection: StoreCollectionInput!
+}
+
+input StoreCollectionInput {
+  name: String!
+  description: String
+  visible: Boolean
+}
+
+type DeleteStoreCollectionResponse {
+  id: ID
+}
+
+input AddProductsToCollectionInput {
+  id: ID!
+  productIds: [ID!]!
+}
+
+type AddProductsToCollectionResponse {
+  collection: StoreCollection
+}
+
+input RemoveProductsFromCollectionInput {
+  id: ID!
+  productIds: [ID!]!
+}
+
+type RemoveProductsFromCollectionResponse {
+  collection: StoreCollection
+}
+
+# ──────────────────────────────────────────────
+# STORES – PRODUCTS
+# ──────────────────────────────────────────────
+
+type StoreProduct {
+  id: ID
+  name: String
+  description: String
+  slug: String
+  productType: StoreProductType
+  price: StorePrice
+  priceRange: StorePriceRange
+  sku: String
+  weight: Float
+  stock: StoreStock
+  media: StoreProductMedia
+  collections: [StoreCollection!]
+  variants: [StoreVariant!]
+  options: [StoreProductOption!]
+  visible: Boolean
+  manageVariants: Boolean
+  createdDate: String
+  updatedDate: String
+}
+
+enum StoreProductType {
+  unspecified_product_type
+  physical
+  digital
+}
+
+type StorePrice {
+  currency: String
+  price: Float
+  discountedPrice: Float
+  formatted: StorePriceFormatted
+  pricePerUnit: Float
+  pricePerUnitData: StorePricePerUnitData
+}
+
+type StorePriceFormatted {
+  price: String
+  discountedPrice: String
+}
+
+type StorePricePerUnitData {
+  totalQuantity: Float
+  totalMeasurementUnit: String
+  pricePerUnit: Float
+  pricePerUnitMeasurementUnit: String
+}
+
+type StorePriceRange {
+  minValue: Float
+  maxValue: Float
+}
+
+type StoreStock {
+  inventoryStatus: CatalogV1StockInventoryStatus
+  quantity: Int
+  inStock: Boolean
+  trackInventory: Boolean
+}
+
+enum CatalogV1StockInventoryStatus {
+  undefined
+  in_stock
+  out_of_stock
+  partially_out_of_stock
+}
+
+type StoreProductMedia {
+  mainMedia: StoreMediaItem
+  items: [StoreMediaItem!]
+}
+
+type StoreVariant {
+  id: ID
+  choices: String
+  variant: StoreVariantData
+  stock: StoreVariantStock
+}
+
+type StoreVariantData {
+  priceData: StorePrice
+  sku: String
+  weight: Float
+}
+
+type StoreVariantStock {
+  quantity: Int
+  inStock: Boolean
+  trackInventory: Boolean
+}
+
+type StoreProductOption {
+  optionType: StoreOptionType
+  name: String
+  choices: [StoreProductChoice!]
+}
+
+enum StoreOptionType {
+  unspecified_option_type
+  drop_down
+  radio_button
+  boxes
+  swatch
+}
+
+type StoreProductChoice {
+  value: String
+  description: String
+  media: StoreProductChoiceMedia
+  inStock: Boolean
+  visible: Boolean
+}
+
+type StoreProductChoiceMedia {
+  defaultMedia: Image
+}
+
+type StoreProductsResponse {
+  products: [StoreProduct!]
+  pagingMetadata: PagingMetadata
+}
+
+input CreateStoreProductInput {
+  product: StoreProductInput!
+}
+
+input UpdateStoreProductInput {
+  id: ID!
+  product: StoreProductInput!
+}
+
+input StoreProductInput {
+  name: String!
+  description: String
+  productType: StoreProductType
+  sku: String
+  weight: Float
+  visible: Boolean
+}
+
+type DeleteStoreProductResponse {
+  id: ID
+}
+
+input BulkUpdateStoreProductsInput {
+  products: [StoreProductInput!]!
+}
+
+type BulkUpdateStoreProductsResponse {
+  results: [StoreProduct!]
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input BulkAdjustProductPropertiesInput {
+  filter: String!
+  adjustments: StoreProductAdjustments!
+}
+
+input StoreProductAdjustments {
+  price: Float
+  weight: Float
+}
+
+type BulkAdjustProductPropertiesResponse {
+  bulkActionMetadata: BulkActionMetadata
+}
+
+input UpdateVariantsInput {
+  productId: ID!
+  variants: [StoreVariantInput!]!
+}
+
+input StoreVariantInput {
+  id: ID!
+  variant: StoreVariantDataInput!
+}
+
+input StoreVariantDataInput {
+  sku: String
+  weight: Float
+}
+
+type UpdateVariantsResponse {
+  variants: [StoreVariant!]
+}
+
+type ResetAllVariantDataResponse {
+  variants: [StoreVariant!]
+}
+
+input AddProductMediaInput {
+  productId: ID!
+  media: [StoreMediaItemInput!]!
+}
+
+input StoreMediaItemInput {
+  url: String!
+  title: String
+}
+
+type AddProductMediaResponse {
+  product: StoreProduct
+}
+
+input RemoveProductMediaInput {
+  productId: ID!
+  mediaItemIds: [ID!]!
+}
+
+type RemoveProductMediaResponse {
+  product: StoreProduct
+}
+
+input AddProductMediaToChoicesInput {
+  productId: ID!
+  media: [ProductChoiceMediaInput!]!
+}
+
+input ProductChoiceMediaInput {
+  choice: String!
+  mediaItemIds: [ID!]!
+}
+
+type AddProductMediaToChoicesResponse {
+  product: StoreProduct
+}
+
+input RemoveProductMediaFromChoicesInput {
+  productId: ID!
+  media: [ProductChoiceMediaInput!]!
+}
+
+type RemoveProductMediaFromChoicesResponse {
+  product: StoreProduct
+}
+
+# ──────────────────────────────────────────────
+# STORES – INVENTORY
+# ──────────────────────────────────────────────
+
+input GetInventoryVariantsInput {
+  productId: ID!
+}
+
+type GetInventoryVariantsResponse {
+  inventoryItem: StoreInventoryItem
+}
+
+type StoreInventoryItem {
+  id: ID
+  externalId: ID
+  productId: ID
+  trackQuantity: Boolean
+  variants: [StoreInventoryVariant!]
+}
+
+type StoreInventoryVariant {
+  variantId: ID
+  inStock: Boolean
+  quantity: Int
+}
+
+input UpdateInventoryVariantsInput {
+  inventoryItem: StoreInventoryItemInput!
+}
+
+input StoreInventoryItemInput {
+  id: ID!
+  trackQuantity: Boolean
+  variants: [StoreInventoryVariantInput!]!
+}
+
+input StoreInventoryVariantInput {
+  variantId: ID!
+  inStock: Boolean
+  quantity: Int
+}
+
+type UpdateInventoryVariantsResponse {
+  inventoryItem: StoreInventoryItem
+}
+
+input IncrementInventoryInput {
+  inventoryItems: [DecrementIncrementData!]!
+}
+
+input DecrementInventoryInput {
+  inventoryItems: [DecrementIncrementData!]!
+}
+
+input DecrementIncrementData {
+  inventoryItemId: ID!
+  variantId: ID!
+  decrementBy: Int
+  incrementBy: Int
+}
+
+type IncrementInventoryResponse {
+  inventoryItems: [StoreInventoryItem!]
+}
+
+type DecrementInventoryResponse {
+  inventoryItems: [StoreInventoryItem!]
+}
+
+input QueryInventoryInput {
+  query: QueryV2Input!
+}
+
+type QueryInventoryResponse {
+  inventoryItems: [StoreInventoryItem!]
+  pagingMetadata: PagingMetadata
+}
