@@ -1,0 +1,334 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wix REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wix.com/installer/install",
+      "accessTokenUrl": "https://www.wixapis.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/oauth2/token"
+          },
+          "docs": "Create an OAuth 2.0 access token for app authentication"
+        },
+        {
+          "info": {
+            "name": "Refresh an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/oauth2/token/refresh"
+          },
+          "docs": "Refresh an access token"
+        },
+        {
+          "info": {
+            "name": "Get token info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/oauth2/token/info"
+          },
+          "docs": "Get token info"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/carts"
+          },
+          "docs": "Create cart"
+        },
+        {
+          "info": {
+            "name": "Get cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get cart"
+        },
+        {
+          "info": {
+            "name": "Delete cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete cart"
+        },
+        {
+          "info": {
+            "name": "Update cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id/update",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update cart"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts"
+          },
+          "docs": "Create checkout"
+        },
+        {
+          "info": {
+            "name": "Get checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get checkout"
+        },
+        {
+          "info": {
+            "name": "Update checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update checkout"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/orders"
+          },
+          "docs": "Create order"
+        },
+        {
+          "info": {
+            "name": "Get order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/ecom/v1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get order"
+        },
+        {
+          "info": {
+            "name": "Update order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update order"
+        },
+        {
+          "info": {
+            "name": "Search orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/orders/search"
+          },
+          "docs": "Search orders"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/stores/v3/products"
+          },
+          "docs": "Create product"
+        },
+        {
+          "info": {
+            "name": "Query products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/stores/v3/products/query"
+          },
+          "docs": "Query products"
+        },
+        {
+          "info": {
+            "name": "Search products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/stores/v3/products/search"
+          },
+          "docs": "Search products"
+        },
+        {
+          "info": {
+            "name": "Get product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/stores/v3/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get product"
+        },
+        {
+          "info": {
+            "name": "Update product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://www.wixapis.com/stores/v3/products/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update product"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
