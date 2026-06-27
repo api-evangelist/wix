@@ -55,7 +55,7 @@ apis:
   properties:
   - type: Documentation
     url: https://dev.wix.com/docs/sdk
-  - type: SDK
+  - type: SDKs
     url: https://www.npmjs.com/org/wix
     title: Wix JavaScript SDK (npm)
 - aid: wix:headless
@@ -107,7 +107,7 @@ common:
   url: https://dev.wix.com/docs
 - type: GettingStarted
   url: https://dev.wix.com/docs/rest/articles/getting-started/introduction
-- type: SignUp
+- type: Signup
   url: https://users.wix.com/signin
 - type: GitHub
   url: https://github.com/wix
@@ -118,7 +118,7 @@ common:
   url: https://dev.wix.com/blog
 - type: Support
   url: https://support.wix.com
-- type: Forum
+- type: Forums
   url: https://www.wix.com/forum/corvid-tips-questions-and-answers
 - type: GitHubOrganization
   url: https://github.com/wix
@@ -180,7 +180,7 @@ common:
   type: MCPServer
 - name: Agent Skills
   url: https://github.com/wix/skills
-  type: AgentSkill
+  type: AgentSkills
 integrations:
 - name: View templates
 maintainers:
