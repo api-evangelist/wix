@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.wix.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 12 11:54:01 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: dev.wix.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 12 11:54:01 2026 GMT
+  hsts: true
+  hsts_max_age: 120
+- host: www.wixapis.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 13 11:14:54 2026 GMT
+  hsts: null
+domains:
+- domain: wix.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: wixapis.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

@@ -97,6 +97,10 @@ apis:
   - type: AsyncAPI
     url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/asyncapi/wix-asyncapi.yml
 common:
+- type: VulnerabilityDisclosure
+  url: security/wix-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/wix-domain-security.yml
 - type: Authentication
   url: authentication/wix-authentication.yml
 - type: OAuthScopes
