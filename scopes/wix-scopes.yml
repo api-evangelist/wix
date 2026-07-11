@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/wix-openapi.yml
+docs: https://dev.wix.com/docs/build-apps/develop-your-app/access/authorization/about-permissions
+note: Wix OAuth does not use scope strings in the authorization flow; app permissions
+  are granted as permission scopes configured in the app dashboard (GUID-identified
+  via the App Permissions API) and documented per endpoint in the API reference,
+  with no aggregated published scopes list (see
+  https://dev.wix.com/docs/build-apps/develop-your-app/access/authorization/about-permissions).
+schemes:
+- name: oauth2
+  source: openapi/wix-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.wix.com/installer/install
+    tokenUrl: https://www.wixapis.com/oauth2/token
+  description: OAuth 2.0 for Wix third-party apps
+scopes: []

@@ -97,6 +97,10 @@ apis:
   - type: AsyncAPI
     url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/asyncapi/wix-asyncapi.yml
 common:
+- type: Authentication
+  url: authentication/wix-authentication.yml
+- type: OAuthScopes
+  url: scopes/wix-scopes.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/wix-com
 - type: Website
