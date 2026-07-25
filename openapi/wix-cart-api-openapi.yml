@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: Wix REST Cart API
+  description: 'Wix REST API provides programmatic access to Wix business solutions including
+
+    e-commerce (carts, checkouts, orders, products), site services, and OAuth 2.0
+
+    authentication. Apps authenticate via OAuth on behalf of Wix users, site visitors,
+
+    or members.
+
+    '
+  version: '1.0'
+  contact:
+    name: Wix
+    url: https://dev.wix.com/docs/rest
+servers:
+- url: https://www.wixapis.com
+  description: Wix API production server
+security:
+- oauth2: []
+- apiKey: []
+tags:
+- name: Cart
+paths:
+  /ecom/v1/carts:
+    post:
+      tags:
+      - Cart
+      summary: Create cart
+      operationId: createCart
+      responses:
+        '201':
+          description: Created
+  /ecom/v1/carts/{id}:
+    parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Cart
+      summary: Get cart
+      operationId: getCart
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Cart
+      summary: Delete cart
+      operationId: deleteCart
+      responses:
+        '204':
+          description: No Content
+  /ecom/v1/carts/{id}/update:
+    parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Cart
+      summary: Update cart
+      operationId: updateCart
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for Wix third-party apps
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.wix.com/installer/install
+          tokenUrl: https://www.wixapis.com/oauth2/token
+          scopes: {}
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authentication (Wix-account-only; not for third-party apps)
