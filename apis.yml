@@ -7,9 +7,22 @@ description: Wix is a cloud-based web development platform that allows users to 
   and more. Developers can customize Wix sites, build marketplace apps, and integrate
   Wix capabilities into any frontend.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wix.png
 tags:
 - CMS
 - eCommerce
@@ -22,12 +35,12 @@ specificationVersion: '0.19'
 apis:
 - aid: wix:rest-api
   name: Wix REST API
-  description: The Wix REST API provides full programmatic access to all Wix platform
-    capabilities via standard HTTP REST endpoints. The API covers eCommerce (stores,
-    orders, catalog, payments, gift cards), bookings, CRM (contacts, members, forms),
-    content (blog, events, restaurants, portfolio), business management (analytics,
-    automations, calendar, notifications, payments), and account-level management
-    (sites, domains, resellers). Authentication uses OAuth 2.0.
+  description: >-
+    The Wix REST API provides full programmatic access to all Wix platform capabilities via standard HTTP
+    REST endpoints. The API covers eCommerce (stores, orders, catalog, payments, gift cards), bookings,
+    CRM (contacts, members, forms), content (blog, events, restaurants, portfolio), business management
+    (analytics, automations, calendar, notifications, payments), and account-level management (sites,
+    domains, resellers). Authentication uses OAuth 2.0.
   humanURL: https://dev.wix.com/docs/rest
   tags:
   - CMS
@@ -43,10 +56,10 @@ apis:
     type: GraphQL
 - aid: wix:javascript-sdk
   name: Wix JavaScript SDK
-  description: The Wix JavaScript SDK provides modular npm packages for accessing
-    Wix business solutions and site data from JavaScript code. It supports Wix Sites,
-    Wix Apps, and Wix Headless projects. Modules cover eCommerce, bookings, CRM, blog,
-    events, stores, payments, and more.
+  description: >-
+    The Wix JavaScript SDK provides modular npm packages for accessing Wix business solutions and site
+    data from JavaScript code. It supports Wix Sites, Wix Apps, and Wix Headless projects. Modules cover
+    eCommerce, bookings, CRM, blog, events, stores, payments, and more.
   humanURL: https://dev.wix.com/docs/sdk
   tags:
   - JavaScript
@@ -60,9 +73,9 @@ apis:
     title: Wix JavaScript SDK (npm)
 - aid: wix:headless
   name: Wix Headless
-  description: Wix Headless enables developers to use Wix business solutions as a
-    backend while building custom frontends with any framework. It provides managed
-    commerce, CRM, and content APIs accessible from any tech stack.
+  description: >-
+    Wix Headless enables developers to use Wix business solutions as a backend while building custom frontends
+    with any framework. It provides managed commerce, CRM, and content APIs accessible from any tech stack.
   humanURL: https://dev.wix.com/docs/go-headless
   tags:
   - Headless
@@ -73,29 +86,76 @@ apis:
     url: https://dev.wix.com/docs/go-headless
 - aid: wix:webhooks
   name: Wix Webhooks
-  description: The Wix webhook surface delivers signed JWT events to subscriber URLs
-    registered in the Wix Dev Center. Events cover Stores (products, inventory, collections,
-    variants), eCommerce (cart, checkout, abandoned checkout, orders, order transactions),
-    Bookings v2 (bookings, services, legacy resource/schedule/category notifications),
-    Members and Badges, Contacts v4 (and labels/extended fields), Forms submissions,
-    Pricing Plans (plan and order lifecycle), Events v3 (events, RSVP, orders, reservations,
-    ticket definitions, guests, policies), Blog posts and drafts, Coupons, Loyalty
-    Program accounts and program, and app instance lifecycle. Payloads are JWTs that
-    decode into a common envelope (id, entityFqdn, slug, entityId, eventTime, originatedFrom,
-    triggeredByAnonymizeRequest) plus an event-specific payload.
-  humanURL: https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
+  description: >-
+    The Wix webhook surface delivers signed JWT events to subscriber URLs registered in the Wix Dev Center.
+    Events cover Stores (products, inventory, collections, variants), eCommerce (cart, checkout, abandoned
+    checkout, orders, order transactions), Bookings v2 (bookings, services, legacy resource/schedule/category
+    notifications), Members and Badges, Contacts v4 (and labels/extended fields), Forms submissions, Pricing
+    Plans (plan and order lifecycle), Events v3 (events, RSVP, orders, reservations, ticket definitions,
+    guests, policies), Blog posts and drafts, Coupons, Loyalty Program accounts and program, and app instance
+    lifecycle. Payloads are JWTs that decode into a common envelope (id, entityFqdn, slug, entityId, eventTime,
+    originatedFrom, triggeredByAnonymizeRequest) plus an event-specific payload.
+  humanURL: >-
+    https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
   tags:
   - Webhooks
   - AsyncAPI
   - Events
   properties:
   - type: Documentation
-    url: https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
+    url: >-
+      https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
   - type: Documentation
     url: https://dev.wix.com/docs/rest/articles/getting-started/webhook-structure
     title: About the Structure of Webhooks
   - type: AsyncAPI
-    url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/asyncapi/wix-asyncapi.yml
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/asyncapi/wix-asyncapi.yml
+- aid: wix:wix-cart-api
+  name: Wix Cart API
+  description: The Cart API from Wix — 3 operation(s) for cart.
+  humanURL: https://dev.wix.com/docs/rest
+  tags:
+  - Cart
+  properties:
+  - type: OpenAPI
+    url: openapi/wix-cart-api-openapi.yml
+- aid: wix:wix-checkout-api
+  name: Wix Checkout API
+  description: The Checkout API from Wix — 2 operation(s) for checkout.
+  humanURL: https://dev.wix.com/docs/rest
+  tags:
+  - Checkout
+  properties:
+  - type: OpenAPI
+    url: openapi/wix-checkout-api-openapi.yml
+- aid: wix:wix-oauth-api
+  name: Wix OAuth API
+  description: The OAuth API from Wix — 3 operation(s) for oauth.
+  humanURL: https://dev.wix.com/docs/rest
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/wix-oauth-api-openapi.yml
+- aid: wix:wix-orders-api
+  name: Wix Orders API
+  description: The Orders API from Wix — 3 operation(s) for orders.
+  humanURL: https://dev.wix.com/docs/rest
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/wix-orders-api-openapi.yml
+- aid: wix:wix-products-api
+  name: Wix Products API
+  description: The Products API from Wix — 4 operation(s) for products.
+  humanURL: https://dev.wix.com/docs/rest
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/wix-products-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/wix-agentic-access.yml
