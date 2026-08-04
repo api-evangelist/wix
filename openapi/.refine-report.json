@@ -1,0 +1,22 @@
+{
+  "provider": "wix",
+  "sources": [
+    "wix-cart-api-openapi.yml",
+    "wix-checkout-api-openapi.yml",
+    "wix-oauth-api-openapi.yml",
+    "wix-orders-api-openapi.yml",
+    "wix-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "wix-cart-api-openapi.yml",
+    "wix-checkout-api-openapi.yml",
+    "wix-oauth-api-openapi.yml",
+    "wix-orders-api-openapi.yml",
+    "wix-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
