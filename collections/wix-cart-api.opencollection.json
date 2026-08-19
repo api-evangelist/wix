@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wix REST Cart API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wix.com/installer/install",
+      "accessTokenUrl": "https://www.wixapis.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/carts"
+          },
+          "docs": "Create cart"
+        },
+        {
+          "info": {
+            "name": "Get cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get cart"
+        },
+        {
+          "info": {
+            "name": "Delete cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete cart"
+        },
+        {
+          "info": {
+            "name": "Update cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/carts/:id/update",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update cart"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wix REST Cart Checkout API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wix.com/installer/install",
+      "accessTokenUrl": "https://www.wixapis.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts"
+          },
+          "docs": "Create checkout"
+        },
+        {
+          "info": {
+            "name": "Get checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get checkout"
+        },
+        {
+          "info": {
+            "name": "Update checkout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/ecom/v1/checkouts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update checkout"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wix REST Cart OAuth API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.wix.com/installer/install",
+      "accessTokenUrl": "https://www.wixapis.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/oauth2/token"
+          },
+          "docs": "Create an OAuth 2.0 access token for app authentication"
+        },
+        {
+          "info": {
+            "name": "Refresh an access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.wixapis.com/oauth2/token/refresh"
+          },
+          "docs": "Refresh an access token"
+        },
+        {
+          "info": {
+            "name": "Get token info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.wixapis.com/oauth2/token/info"
+          },
+          "docs": "Get token info"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
