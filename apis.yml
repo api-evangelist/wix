@@ -25,6 +25,11 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wix.png
 tags:
 - CMS
+- E-Commerce
+- Headless
+- Website Builder
+tags_raw:
+- CMS
 - eCommerce
 - Headless
 - Website Builder
@@ -43,6 +48,11 @@ apis:
     domains, resellers). Authentication uses OAuth 2.0.
   humanURL: https://dev.wix.com/docs/rest
   tags:
+  - CMS
+  - CRM
+  - E-Commerce
+  - REST
+  tags_raw:
   - CMS
   - CRM
   - eCommerce
@@ -98,6 +108,10 @@ apis:
   humanURL: >-
     https://dev.wix.com/docs/build-apps/develop-your-app/api-integrations/events-and-webhooks/about-webhooks
   tags:
+  - Webhook
+  - AsyncAPI
+  - Event
+  tags_raw:
   - Webhooks
   - AsyncAPI
   - Events
@@ -134,6 +148,8 @@ apis:
   description: The OAuth API from Wix — 3 operation(s) for oauth.
   humanURL: https://dev.wix.com/docs/rest
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -143,6 +159,8 @@ apis:
   description: The Orders API from Wix — 3 operation(s) for orders.
   humanURL: https://dev.wix.com/docs/rest
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -152,6 +170,8 @@ apis:
   description: The Products API from Wix — 4 operation(s) for products.
   humanURL: https://dev.wix.com/docs/rest
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
