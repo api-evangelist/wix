@@ -7,6 +7,18 @@ description: Wix is a cloud-based web development platform that allows users to 
   and more. Developers can customize Wix sites, build marketplace apps, and integrate
   Wix capabilities into any frontend.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
