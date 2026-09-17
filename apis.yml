@@ -177,15 +177,15 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/wix-products-api-openapi.yml
-- aid: wix:wix-o-auth-api
+- aid: wix:wix-oauth-api
   name: Wix O Auth API
-  description: The O Auth API from Wix — 3 operation(s) for o auth.
+  description: The OAuth API from Wix — 3 operation(s) for oauth.
   humanURL: https://dev.wix.com/docs/rest
   tags:
-  - O Auth
+  - OAuth
   properties:
   - type: OpenAPI
-    url: openapi/wix-o-auth-api-openapi.yml
+    url: openapi/wix-oauth-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/wix-agentic-access.yml
