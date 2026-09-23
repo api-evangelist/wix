@@ -1,15 +1,13 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wix REST Cart Checkout API
+  title: Wix REST Checkout API
   description: 'Wix REST API provides programmatic access to Wix business solutions including
 
     e-commerce (carts, checkouts, orders, products), site services, and OAuth 2.0
 
     authentication. Apps authenticate via OAuth on behalf of Wix users, site visitors,
 
-    or members.
-
-    '
+    or members.'
   version: '1.0'
   contact:
     name: Wix
