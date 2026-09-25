@@ -189,6 +189,8 @@ apis:
   - type: OpenAPI
     url: openapi/wix-oauth-api-openapi.yml
 common:
+- type: VendorFacets
+  url: vendor-facets/wix-vendor-facets.yml
 - type: AgenticAccess
   url: agentic-access/wix-agentic-access.yml
 - type: VulnerabilityDisclosure
