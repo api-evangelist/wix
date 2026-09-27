@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Wix REST O Auth API
+  title: Wix REST OAuth API
   description: 'Wix REST API provides programmatic access to Wix business solutions including
 
     e-commerce (carts, checkouts, orders, products), site services, and OAuth 2.0
