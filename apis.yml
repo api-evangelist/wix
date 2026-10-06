@@ -46,7 +46,7 @@ tags_raw:
 - Headless
 - Website Builder
 created: '2025-02-08'
-modified: '2026-05-30'
+modified: '2026-10-06'
 url: https://raw.githubusercontent.com/api-evangelist/wix/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
@@ -189,6 +189,10 @@ apis:
   - type: OpenAPI
     url: openapi/wix-oauth-api-openapi.yml
 common:
+- url: https://www.wix.com/blog
+  type: Blog
+- url: https://www.wix.com/blog/blog-feed.xml
+  type: BlogRSS
 - type: VendorFacets
   url: vendor-facets/wix-vendor-facets.yml
 - type: AgenticAccess
