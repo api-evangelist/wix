@@ -1,0 +1,461 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/wix/integrations
+- https://n8n.io/integrations/wix/
+checked:
+- https://composio.dev/toolkits/wix
+- https://monid.ai/tools/wix
+- https://n8n.io/integrations/wix/
+- https://zapier.com/apps/wix/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: wix
+  url: https://zapier.com/apps/wix/integrations
+  external_url: https://www.wix.com/
+  partner_tier: PLATINUM
+  triggers:
+  - key: k1380B703Ce81Ff05F11539571D94Dfcd
+    label: eCommerce
+  - key: k13d21c63B5Ec59128397C3A5Ddb27A97
+    label: Bookings
+  - key: k140603AdAf8D84A52C80A0F60Cb47351
+    label: Events
+  - key: k14517E1A3Ff0Af98408E2Bd6953C36A2
+    label: Chat and Inbox
+  - key: k146C0D71352E44649A032E868Aabe7B9
+    label: Tasks and Workflows
+  - key: k148C2287C669D849D153463C7486A694
+    label: Members and Contacts
+  - key: k14BcDeD700667C3514D7466Cb3F09103
+    label: Blog
+  - key: k14Ce1214B278A7E4137300Cebd1Bef7C
+    label: Forms
+  - key: k1522827FC56CA5C92Ac900F9E6Ae12D3
+    label: Pricing Plans
+  - key: k1537B24E29D16D8FB8E1D6860F2F70B9
+    label: File Share
+  - key: k1973457Fc0214Da5941F58444Ff761D4
+    label: CMS Forms
+  - key: k2936472AA1Ed4Ae59F71614313A9F4E7
+    label: Online Programs
+  - key: k333B456eDd484D6Bb32B9Fd48D74E163
+    label: Wix Donations
+  - key: k58Be0514Fc104Eb1886E2909D18F33B3
+    label: Loyalty and Referrals
+  - key: k8725B2552Aa24A53B76D7D3C363AaEea
+    label: Payments
+  - key: k9A5D83Fd8570482E81AbCfa88942Ee60
+    label: Wix Restaurants
+  - key: kA95A5FceE37044029Ce496956Acc747D
+    label: Wix Reviews
+  - key: kB68C2F3D8A704E1F94323Cd1Fd011965
+    label: Wix Proposals
+  - key: kD90652A2F5A14C7C84C4D4Cdcc41F130
+    label: Wix Portfolio
+  - key: kEe07009708504F23Ad8C3Cdd4Efd5244
+    label: Segments
+  actions: []
+  searches: []
+- marketplace: n8n
+  channel: open-source-node
+  app: wix
+  url: https://n8n.io/integrations/wix/
+  identity: title
+  pair_pages: 0
+  pairs: []
+edges:
+- partner_name: Mailchimp
+  partner: mailchimp
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/mailchimp
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://mailchimp.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Pipedrive
+  partner: pipedrive
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/pipedrive
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://pipedrive.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Brevo
+  partner: brevo
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/brevo
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.sendinblue.com/?utm_medium=plugin&utm_source=zapier
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: Flodesk
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/flodesk
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://flodesk.com/
+- partner_name: Google Ads
+  partner: google-ads
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/google-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://ads.google.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: MailerLite
+  partner: mailerlite
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/mailerlite
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.mailerlite.com/?utm_source=zapier&utm_medium=partner&utm_campaign=profile&utm_term=learn_more&utm_content=integrations
+- partner_name: LeadConnector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/leadconnector
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.leadconnectorhq.com/
+- partner_name: GetResponse
+  partner: getresponse
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/getresponse
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.getresponse.com/
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Notion
+  partner: notion
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/notion
+  direction: third-party
+  category: Task Management
+  partner_url: https://www.notion.so/
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: Google Docs
+  partner: google-docs
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/google-docs
+  direction: third-party
+  category: Documents
+  partner_url: http://google.com/
+- partner_name: WhatsApp Notifications
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/whatsapp-notifications
+  direction: third-party
+  category: Communication
+  partner_url: null
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Google Drive
+  partner: google-drive
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/google-drive
+  direction: third-party
+  category: File Management & Storage
+  partner_url: https://www.google.com/drive/
+- partner_name: Twilio
+  partner: twilio
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/twilio
+  direction: third-party
+  category: Phone & SMS
+  partner_url: https://www.twilio.com/
+- partner_name: Follow Up Boss
+  partner: follow-up-boss
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/follow-up-boss
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: http://www.followupboss.com/
+- partner_name: Microsoft Outlook
+  partner: microsoft-outlook
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/microsoft-outlook
+  direction: third-party
+  category: Calendar
+  partner_url: https://outlook.live.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Microsoft Excel
+  partner: null
+  partner_match: null
+  partner_candidate: zapier
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/excel
+  direction: third-party
+  category: Microsoft
+  partner_url: https://zapier.com/office.com
+- partner_name: Constant Contact
+  partner: constant-contact
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/constant-contact
+  direction: third-party
+  category: Email Newsletters
+  partner_url: http://www.constantcontact.com/signup.jsp?pn=zapier
+- partner_name: MailerLite Classic
+  partner: mailerlite
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/mailerlite-classic
+  direction: third-party
+  category: Email Newsletters
+  partner_url: https://www.mailerlite.com/
+- partner_name: Zoom
+  partner: zoom
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/zoom
+  direction: third-party
+  category: Video Conferencing
+  partner_url: https://www.zoom.us/
+- partner_name: Kajabi
+  partner: kajabi
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/wix/integrations/kajabi
+  direction: third-party
+  category: eCommerce
+  partner_url: http://kajabi.com/
+templates:
+- title: Add or update Mailchimp subscribers when a new Wix Form is submitted
+  url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted
+  apps:
+  - wix
+  - mailchimp
+- title: Create HubSpot contacts when a new Wix Form is submitted
+  url: https://zapier.com/apps/hubspot/integrations/wix/289449/create-hubspot-contacts-when-a-new-wix-form-is-submitted
+  apps:
+  - wix
+  - hubspot
+- title: Add rows to Google Sheets spreadsheets when a new Wix Form is submitted
+  url: https://zapier.com/apps/google-sheets/integrations/wix/289428/add-rows-to-google-sheets-spreadsheets-when-a-new-wix-form-is-submitted
+  apps:
+  - wix
+  - google-sheets
+- title: Send funnel events to Facebook Conversions from Wix
+  url: https://zapier.com/apps/facebook-conversions/integrations/wix/1130094/send-funnel-events-to-facebook-conversions-from-wix
+  apps:
+  - wix
+  - facebook-conversions
+- title: Add Contact to Customer List With Email in Google Ads for Automation Rule in Wix
+  url: https://zapier.com/apps/google-ads/integrations/wix/1008313/add-contact-to-customer-list-with-email-in-google-ads-for-automation-rule-in-wix
+  apps:
+  - wix
+  - google-ads
+- title: Create items in monday.com when new Wix forms are submitted
+  url: https://zapier.com/apps/monday/integrations/wix/1611133/create-items-in-mondaycom-when-new-wix-forms-are-submitted
+  apps:
+  - wix
+  - monday
+- title: Schedule meetings in Google Meet for new bookings in Wix
+  url: https://zapier.com/apps/google-meet/integrations/wix/1621810/schedule-meetings-in-google-meet-for-new-bookings-in-wix
+  apps:
+  - wix
+  - google-meet
+- title: Create contacts in EmailOctopus from new Wix
+  url: https://zapier.com/apps/emailoctopus/integrations/wix/679594/create-contacts-in-emailoctopus-from-new-wix
+  apps:
+  - wix
+  - emailoctopus
+- title: Create Google Ads contacts from new Wix forms submissions
+  url: https://zapier.com/apps/google-ads/integrations/wix/1631748/create-google-ads-contacts-from-new-wix-forms-submissions
+  apps:
+  - wix
+  - google-ads
+- title: Create Google Ads offline conversions from new Wix forms entries
+  url: https://zapier.com/apps/google-ads/integrations/wix/1618862/create-google-ads-offline-conversions-from-new-wix-forms-entries
+  apps:
+  - wix
+  - google-ads
+- title: Send messages in WhatsApp Notifications when new forms are received in Wix
+  url: https://zapier.com/apps/whatsapp-notifications/integrations/wix/1619050/send-messages-in-whatsapp-notifications-when-new-forms-are-received-in-wix
+  apps:
+  - wix
+  - whatsapp-notifications
+- title: Add new Wix forms entries to Mailchimp as tagged subscribers
+  url: https://zapier.com/apps/mailchimp/integrations/wix/1624239/add-new-wix-forms-entries-to-mailchimp-as-tagged-subscribers
+  apps:
+  - wix
+  - mailchimp
+template_total: 3148
