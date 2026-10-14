@@ -5,6 +5,7 @@ source:
 - https://n8n.io/integrations/wix/
 checked:
 - https://composio.dev/toolkits/wix
+- https://marketplace.visualstudio.com/vscode
 - https://monid.ai/tools/wix
 - https://n8n.io/integrations/wix/
 - https://zapier.com/apps/wix/integrations
@@ -397,6 +398,25 @@ edges:
   direction: third-party
   category: eCommerce
   partner_url: http://kajabi.com/
+- partner_name: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_match: aggregator
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.visualstudio.com/publishers/wix
+  listing_count: 2
+  apps:
+  - Import Cost
+  - glean
+  publisher_name: Wix
+  badges:
+  - Verified publisher
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
   url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted

@@ -61,7 +61,6 @@
   arazzo: null
 - slug: wix-create-items-in-monday-com-when-new-wix-forms-are-submitted
   label: Create items in monday.com when new Wix forms are submitted
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   use_case: Create items in monday.com when new Wix forms are submitted
@@ -71,7 +70,7 @@
   evidence: https://zapier.com/apps/monday/integrations/wix/1611133/create-items-in-mondaycom-when-new-wix-forms-are-submitted
   template: https://zapier.com/apps/monday/integrations/wix/1611133/create-items-in-mondaycom-when-new-wix-forms-are-submitted
   source: template
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: wix-create-google-ads-contacts-from-new-wix-forms-submissions
   label: Create Google Ads contacts from new Wix forms submissions
@@ -356,7 +355,6 @@
   arazzo: null
 - slug: wix-microsoft-excel
   label: Microsoft Excel
-  partner: microsoft-excel
   partner_name: Microsoft Excel
   category: Microsoft
   type: marketplace
@@ -364,7 +362,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/wix/integrations/excel
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: wix-constant-contact
   label: Constant Contact
@@ -413,4 +411,16 @@
   evidence: https://zapier.com/apps/wix/integrations/kajabi
   source: edge
   status: pending-generation
+  arazzo: null
+- slug: wix-visual-studio-code-marketplace
+  label: Visual Studio Code Marketplace
+  partner: vs-code-marketplace
+  partner_name: Visual Studio Code Marketplace
+  type: marketplace
+  marketplace: vscode
+  channel: partner-built
+  evidence: https://marketplace.visualstudio.com/publishers/wix
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
   arazzo: null
