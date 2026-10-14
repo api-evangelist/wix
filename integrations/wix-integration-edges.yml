@@ -9,6 +9,7 @@ checked:
 - https://marketplace.visualstudio.com/vscode
 - https://monid.ai/tools/wix
 - https://n8n.io/integrations/wix/
+- https://registry.modelcontextprotocol.io/v0/servers
 - https://zapier.com/apps/wix/integrations
 summary: null
 marketplace_apps:
@@ -418,6 +419,38 @@ edges:
   - Verified domain
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.wix
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: com.wix/mcp
+    register_id: com.wix/mcp
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-14'
+  mcp_registry:
+    servers:
+    - com.wix/mcp
+    hosted_remote: 1
+    local_package: 0
+    transports:
+      sse: 1
+      streamable-http: 1
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - wix.com
+  matched_by:
+  - namespace-domain
+  detected_by: sweep-agent-tools.py
+  first_seen: '2026-10-14'
 - partner_name: Clever (clever-app-gallery)
   partner: clever
   partner_match: mirror
