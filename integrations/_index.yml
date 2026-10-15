@@ -424,25 +424,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: wix-mcp-registry
-  label: MCP Registry
-  partner: mcp
-  partner_name: MCP Registry
-  type: register
-  channel: standard-directory
-  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.wix
-  source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: registry.modelcontextprotocol.io
-    spec_file: null
-    role: mcp-server-listing
-    registered_name: com.wix/mcp
-    register_id: com.wix/mcp
-    detected_by: sweep-agent-tools.py
-    detected: '2026-10-14'
-  status: not-a-workflow
-  arazzo: null
 - slug: wix-clever-clever-app-gallery
   label: Clever (clever-app-gallery)
   partner: clever
@@ -465,6 +446,88 @@
   marketplace: own
   channel: partner-built
   evidence: https://marketplace.stripe.com/apps/wix
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: wix-mcp-registry
+  label: MCP Registry
+  partner: mcp
+  partner_name: MCP Registry
+  type: register
+  channel: standard-directory
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.wix
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: com.wix/mcp
+    register_id: com.wix/mcp
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: wix-zapier
+  label: Zapier
+  partner: zapier
+  partner_name: Zapier
+  type: marketplace
+  marketplace: zapier-directory
+  channel: ipaas-listing
+  evidence: https://zapier.com/apps/wix/integrations
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Zapier app directory (zapier.com/api/v4/apps)
+    spec_file: null
+    role: ipaas-connector:zapier
+    registered_name: Wix
+    matched_domain: wix.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wix
+    beta: false
+    builder: unknown (not in the directory record)
+  status: pending-generation
+  arazzo: null
+- slug: wix-pipedream
+  label: Pipedream
+  partner: pipedream
+  partner_name: Pipedream
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/wix_api_key
+  source: edge
+  relationship: ipaas-bridge
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: wix api key
+    matched_domain: wix.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wix_api_key
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  status: pending-generation
+  arazzo: null
+- slug: wix-contentful-own
+  label: Contentful (own)
+  partner: contentful
+  partner_name: Contentful (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.contentful.com/marketplace/wix/
   source: edge
   relationship: platform-app
   status: not-a-workflow
