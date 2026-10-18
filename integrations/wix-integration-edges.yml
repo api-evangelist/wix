@@ -7,11 +7,15 @@ checked:
 - clever/integrations/clever-integration-edges.yml
 - contentful/integrations/contentful-integration-edges.yml
 - https://composio.dev/toolkits/wix
+- https://data.iana.org/rdap/dns.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://marketplace.visualstudio.com/vscode
 - https://monid.ai/tools/wix
 - https://n8n.io/integrations/wix/
 - https://registry.modelcontextprotocol.io/v0/servers
+- https://www.iana.org/assignments/registrar-ids/registrar-ids.xml
+- https://www.icann.org/en/contracted-parties/accredited-registrars/list-of-accredited-registrars
+- https://www.icann.org/resources/registries/gtlds/v2/gtlds.json
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/wix/integrations
 - stripe/integrations/stripe-integration-edges.yml
@@ -557,6 +561,63 @@ edges:
   listing_count: 1
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
+- partner_name: ICANN (accredited registrar)
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.icann.org/en/contracted-parties/accredited-registrars/list-of-accredited-registrars
+  category: ICANN-accredited domain registrar
+  contract_reference:
+    register: ICANN Accredited Registrars (icann.org list-of-accredited-registrars)
+    standard: ICANN Registrar Accreditation Agreement
+    spec_file: null
+    role: icann-accredited-registrar
+    registered_name: Wix.com Ltd.
+    register_id: IANA 3817
+    matched_domain: wix.com
+    matched_by: domain
+    domain_source: url
+    country: Israel
+    accreditations_in_family: 1
+    other_iana_ids: []
+    signal_note: 'participation only: an ICANN accreditation is a licence to sell names, not a conformance result
+      (no certified_products); the number of accreditations a family holds (drop-catch shells) is breadth, context
+      only, never counted'
+    detected_by: sweep-domains-dns.py
+    detected: '2026-10-18'
+  detected_by: sweep-domains-dns.py
+  first_seen: '2026-10-18'
+- partner_name: RDAP (IANA bootstrap / registrar ids)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: compatible
+  shape: rdap
+  degree: declared-unqualified
+  evidence_kind: iana-bootstrap
+  direction: partner-built
+  evidence: https://www.iana.org/assignments/registrar-ids/registrar-ids.xml
+  note: IANA lists an RDAP service run on this provider's domain; a published endpoint, not a conformance test.
+    REPORT ONLY (compatible edges are never in depth or position)
+  contract_reference:
+    register: IANA RDAP bootstrap (data.iana.org/rdap/dns.json) + IANA Registrar IDs
+    spec_file: null
+    role: rdap-registrar
+    registered_name: Wix.com Ltd.
+    register_id: '3817'
+    matched_domain: wix.com
+    matched_by: domain
+    rdap_base_url: https://rdap.wix.com/
+    tlds: []
+    signal_note: report only; TLD and accreditation counts are context, never counted
+    detected_by: sweep-domains-dns.py
+    detected: '2026-10-18'
+  detected_by: sweep-domains-dns.py
+  first_seen: '2026-10-18'
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
   url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted
