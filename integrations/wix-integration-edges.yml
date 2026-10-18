@@ -9,6 +9,7 @@ checked:
 - https://composio.dev/toolkits/wix
 - https://data.iana.org/rdap/dns.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/meltano/hub
 - https://marketplace.visualstudio.com/vscode
 - https://monid.ai/tools/wix
 - https://n8n.io/integrations/wix/
@@ -617,6 +618,35 @@ edges:
     detected_by: sweep-domains-dns.py
     detected: '2026-10-18'
   detected_by: sweep-domains-dns.py
+  first_seen: '2026-10-18'
+- partner_name: Meltano
+  partner: meltano
+  partner_match: aggregator
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://hub.meltano.com/extractors/tap-wix--hotgluexyz
+  category: null
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Wix
+    matched_domain: wix.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-wix--hotgluexyz
+    maintenance_status:
+    - active
+    quality:
+    - gold
+    builder: 'community (Meltano Hub variant maintainers: hotgluexyz)'
+  detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
