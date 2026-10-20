@@ -9,6 +9,7 @@ checked:
 - https://composio.dev/toolkits/wix
 - https://data.iana.org/rdap/dns.json
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
+- https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/
 - https://github.com/meltano/hub
 - https://marketplace.visualstudio.com/vscode
 - https://monid.ai/tools/wix
@@ -463,89 +464,6 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: developer_tools
-- partner_name: MCP Registry
-  partner: mcp
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.wix
-  contract_reference:
-    register: registry.modelcontextprotocol.io
-    spec_file: null
-    role: mcp-server-listing
-    registered_name: com.wix/mcp
-    register_id: com.wix/mcp
-    detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
-  mcp_registry:
-    servers:
-    - com.wix/mcp
-    hosted_remote: 1
-    local_package: 0
-    transports:
-      sse: 1
-      streamable-http: 1
-    auth_declared: 0
-    catalog_declared: true
-    namespace_domains:
-    - wix.com
-  matched_by:
-  - namespace-domain
-  detected_by: sweep-agent-tools.py
-  first_seen: '2026-10-14'
-- partner_name: Zapier
-  partner: zapier
-  partner_match: aggregator
-  type: marketplace
-  marketplace: zapier-directory
-  channel: ipaas-listing
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://zapier.com/apps/wix/integrations
-  category: null
-  contract_reference:
-    register: Zapier app directory (zapier.com/api/v4/apps)
-    spec_file: null
-    role: ipaas-connector:zapier
-    registered_name: Wix
-    matched_domain: wix.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: wix
-    beta: false
-    builder: unknown (not in the directory record)
-  detected_by: sweep-workflow-automation.py
-  first_seen: '2026-10-15'
-- partner_name: Pipedream
-  partner: pipedream
-  partner_match: aggregator
-  type: marketplace
-  marketplace: pipedream-components
-  channel: open-source-node
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/wix_api_key
-  category: null
-  contract_reference:
-    register: Pipedream components (PipedreamHQ/pipedream components/)
-    spec_file: null
-    role: ipaas-connector:pipedream
-    registered_name: wix api key
-    matched_domain: wix.com
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    app_slug: wix_api_key
-    actions: true
-    sources: true
-    builder: Pipedream repo (component)
-  detected_by: sweep-workflow-automation.py
-  first_seen: '2026-10-15'
 - partner_name: Contentful (own)
   partner: contentful
   partner_match: mirror
@@ -562,6 +480,67 @@ edges:
   listing_count: 1
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
+- partner_name: MCP Registry
+  partner: mcp
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.modelcontextprotocol.io/v0/servers?search=com.wix
+  contract_reference:
+    register: registry.modelcontextprotocol.io
+    spec_file: null
+    role: mcp-server-listing
+    registered_name: com.wix/mcp
+    register_id: com.wix/mcp
+    detected_by: sweep-agent-tools.py
+    detected: '2026-10-19'
+  mcp_registry:
+    servers:
+    - com.wix/mcp
+    hosted_remote: 1
+    local_package: 0
+    transports:
+      sse: 1
+      streamable-http: 1
+    auth_declared: 0
+    catalog_declared: true
+    namespace_domains:
+    - wix.com
+  matched_by:
+  - namespace-domain
+  detected_by: sweep-agent-tools.py
+  first_seen: '2026-10-14'
+- partner_name: Meltano
+  partner: meltano
+  partner_match: aggregator
+  type: marketplace
+  marketplace: meltano-hub
+  channel: elt-connector
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://hub.meltano.com/extractors/tap-wix--hotgluexyz
+  category: null
+  contract_reference:
+    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    spec_file: null
+    role: elt-connector:meltano-hub
+    registered_name: Wix
+    matched_domain: wix.com
+    matched_by: domain
+    detected_by: sweep-data-integration.py
+    detected: '2026-10-18'
+    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
+    plugins:
+    - tap-wix--hotgluexyz
+    maintenance_status:
+    - active
+    quality:
+    - gold
+    builder: 'community (Meltano Hub variant maintainers: hotgluexyz)'
+  detected_by: sweep-data-integration.py
+  first_seen: '2026-10-18'
 - partner_name: ICANN (accredited registrar)
   partner: null
   partner_match: register
@@ -619,35 +598,57 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-domains-dns.py
   first_seen: '2026-10-18'
-- partner_name: Meltano
-  partner: meltano
+- partner_name: Zapier
+  partner: zapier
   partner_match: aggregator
   type: marketplace
-  marketplace: meltano-hub
-  channel: elt-connector
+  marketplace: zapier-directory
+  channel: ipaas-listing
   relationship: ipaas-bridge
   direction: third-party
-  evidence: https://hub.meltano.com/extractors/tap-wix--hotgluexyz
+  evidence: https://zapier.com/apps/wix/integrations
   category: null
   contract_reference:
-    register: Meltano Hub (github.com/meltano/hub _data/meltano extractors + loaders)
+    register: Zapier app directory (zapier.com/api/v4/apps)
     spec_file: null
-    role: elt-connector:meltano-hub
+    role: ipaas-connector:zapier
     registered_name: Wix
     matched_domain: wix.com
     matched_by: domain
-    detected_by: sweep-data-integration.py
-    detected: '2026-10-18'
-    signal_note: one edge per (provider, platform); connectors, streams, packages and usage are context, never read
-    plugins:
-    - tap-wix--hotgluexyz
-    maintenance_status:
-    - active
-    quality:
-    - gold
-    builder: 'community (Meltano Hub variant maintainers: hotgluexyz)'
-  detected_by: sweep-data-integration.py
-  first_seen: '2026-10-18'
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wix
+    beta: false
+    builder: unknown (not in the directory record)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
+- partner_name: Pipedream
+  partner: pipedream
+  partner_match: aggregator
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/d5872355ef27b4efa769f05352f2820c299a456e/components/wix_api_key
+  category: null
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: wix api key
+    matched_domain: wix.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: wix_api_key
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
   url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted
