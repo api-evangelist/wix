@@ -28,6 +28,9 @@ checked:
 - https://officialskills.sh/sitemap.xml
 - https://skillsmp.com/sitemap.xml
 - https://www.skills.sh/sitemap.xml
+- https://advertising.amazon.com/partners/directory
+- https://sellercentral.amazon.com/gspn
+- https://sellercentral.amazon.com/selling-partner-appstore
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -924,6 +927,21 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-agent-skills.py
   first_seen: '2026-10-20'
+- partner_name: Amazon Selling Partner Appstore
+  partner: amazon-seller-central
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://sellercentral.amazon.com/selling-partner-appstore/dp/amzn1.sellerapps.app.08f61e2c-8067-4fe9-a5cc-d80d9ef0f316
+  mirror_of: amazon-seller-central/integrations/amazon-seller-central-integration-edges.yml
+  apps:
+  - Wix eCommerce
+  detected: '2026-10-21'
+  detected_by: sweep-amazon-sp-api-appstore.py
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
   url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted
