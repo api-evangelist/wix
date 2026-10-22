@@ -31,6 +31,11 @@ checked:
 - https://advertising.amazon.com/partners/directory
 - https://sellercentral.amazon.com/gspn
 - https://sellercentral.amazon.com/selling-partner-appstore
+- https://dev.wix.com/
+- https://www.wix.com/_api/app-market-search/v1/search
+- https://www.wix.com/_api/marketplace-api/v1/company/
+- https://www.wix.com/app-market/
+- https://www.wix.com/app-market/sitemap.xml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -942,6 +947,1493 @@ edges:
   - Wix eCommerce
   detected: '2026-10-21'
   detected_by: sweep-amazon-sp-api-appstore.py
+- partner_name: 123FormBuilder
+  partner: 123formbuilder
+  partner_match: domain
+  partner_url: https://www.123FormBuilder.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/123formbuilder
+  category: Forms
+  apps:
+  - 123 Form Builder & Payments
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: 123FormBuilder
+    register_id: 123formbuilder
+    matched_domain: 123formbuilder.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: accessiBe
+  partner: accessibe
+  partner_match: domain
+  partner_url: https://www.accessibe.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/accessibe
+  category: Banners & Badges
+  apps:
+  - 'accessiBe: Web Accessibility'
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: accessiBe
+    register_id: accessibe
+    matched_domain: accessibe.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Aftership
+  partner: aftership
+  partner_match: domain
+  partner_url: https://www.aftership.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/aftership
+  category: Shipping & Delivery
+  apps:
+  - AfterShip for TikTok and SHEIN
+  - AfterShip Order Tracking & SMS
+  - AfterShip Returns Center
+  listing_count: 3
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Aftership
+    register_id: aftership
+    matched_domain: aftership.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Alibaba
+  partner: alibaba
+  partner_match: domain
+  partner_url: https://www.alibaba.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/alibaba
+  category: Stores
+  apps:
+  - 'Alibaba.com: Source Globally'
+  - 'Alibaba.com: Sell Globally'
+  listing_count: 2
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Alibaba
+    register_id: alibaba
+    matched_domain: alibaba.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Avalara
+  partner: avalara
+  partner_match: domain
+  partner_url: https://www.avalara.com/us/en/products/sales-and-use-tax/returns.html
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/avalara
+  category: Wix app
+  apps:
+  - 'Avalara Extractor for Returns '
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Avalara
+    register_id: avalara
+    matched_domain: avalara.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Bandsintown, LLC
+  partner: bandsintown
+  partner_match: domain
+  partner_url: https://www.bandsintown.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/bandsintown-llc
+  category: Music
+  apps:
+  - Bandsintown Widget
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Bandsintown, LLC
+    register_id: bandsintown-llc
+    matched_domain: bandsintown.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: ClassPass
+  partner: classpass
+  partner_match: domain
+  partner_url: https://classpass.com/partners?utm_source=wix&utm_medium=referral
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/classpass
+  category: Bookings
+  apps:
+  - ClassPass
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: ClassPass
+    register_id: classpass
+    matched_domain: classpass.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Connecteam
+  partner: connecteam
+  partner_match: domain
+  partner_url: https://connecteam.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/connecteam
+  category: Bookings
+  apps:
+  - Connecteam
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Connecteam
+    register_id: connecteam
+    matched_domain: connecteam.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Constant Contact
+  partner: constant-contact
+  partner_match: domain
+  partner_url: https://www.constantcontact.com/partner-offer?pn=wixapp&cc=indirect_wixmarketplace
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/constant-contact
+  category: Email
+  apps:
+  - Constant Contact
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Constant Contact
+    register_id: constant-contact
+    matched_domain: constantcontact.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: CookieYes Limited
+  partner: cookieyes
+  partner_match: domain
+  partner_url: https://www.cookieyes.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/cookieyes-limited
+  category: Privacy & Security
+  apps:
+  - CookieYes GDPR Cookie Banner
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: CookieYes Limited
+    register_id: cookieyes-limited
+    matched_domain: cookieyes.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Digioh
+  partner: digioh
+  partner_match: domain
+  partner_url: https://howto.digioh.com/how-to-archive/#wix
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/digioh
+  category: Forms
+  apps:
+  - Constant Contact by Digioh
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Digioh
+    register_id: digioh
+    matched_domain: digioh.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Easyship
+  partner: easyship
+  partner_match: domain
+  partner_url: https://www.easyship.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/easyship
+  category: Shipping & Delivery
+  apps:
+  - Easyship
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Easyship
+    register_id: easyship
+    matched_domain: easyship.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Ecwid by Lightspeed
+  partner: ecwid
+  partner_match: domain
+  partner_url: https://www.ecwid.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/ecwid-by-lightspeed
+  category: Stores
+  apps:
+  - Online Store
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Ecwid by Lightspeed
+    register_id: ecwid-by-lightspeed
+    matched_domain: ecwid.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Gelato
+  partner: gelato
+  partner_match: domain
+  partner_url: https://www.gelato.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/gelato
+  category: Print on Demand
+  apps:
+  - 'Gelato: Print on Demand'
+  - Partners Storefronts
+  listing_count: 2
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Gelato
+    register_id: gelato
+    matched_domain: gelato.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - SELF_PUBLISHED
+- partner_name: Givebutter Inc
+  partner: givebutter
+  partner_match: domain
+  partner_url: https://givebutter.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/givebutter-inc
+  category: Crowdfunding
+  apps:
+  - Givebutter
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Givebutter Inc
+    register_id: givebutter-inc
+    matched_domain: givebutter.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - SELF_PUBLISHED
+- partner_name: HotelRunner
+  partner: hotelrunner
+  partner_match: domain
+  partner_url: https://hotelrunner.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/hotelrunner
+  category: Hotels
+  apps:
+  - Wix Hotels
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: HotelRunner
+    register_id: hotelrunner
+    matched_domain: hotelrunner.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Intuit Inc.
+  partner: intuit
+  partner_match: domain+name-among-holders
+  partner_url: https://www.intuit.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/intuit-inc
+  category: Accounting
+  apps:
+  - QuickBooks Online
+  - Mailchimp
+  listing_count: 2
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Intuit Inc.
+    register_id: intuit-inc
+    matched_domain: intuit.com
+    matched_by: domain+name-among-holders
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Jobber
+  partner: jobber
+  partner_match: domain
+  partner_url: https://www.getjobber.com/plp/wix
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/jobber
+  category: Bookings
+  apps:
+  - Jobber
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Jobber
+    register_id: jobber
+    matched_domain: getjobber.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_url: https://www.jotform.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/jotform
+  category: Forms
+  apps:
+  - 'Jotform: Form Builder&Payments'
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Jotform
+    register_id: jotform
+    matched_domain: jotform.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - SELF_PUBLISHED
+- partner_name: Klaviyo
+  partner: klaviyo
+  partner_match: domain
+  partner_url: https://www.klaviyo.com/platform
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/klaviyo
+  category: Email
+  apps:
+  - Klaviyo
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Klaviyo
+    register_id: klaviyo
+    matched_domain: klaviyo.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Kudobuzz
+  partner: kudobuzz
+  partner_match: domain
+  partner_url: https://www.kudobuzz.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/kudobuzz
+  category: Reviews & Testimonials
+  apps:
+  - Kudobuzz Product Reviews
+  - Kudobuzz Shoppable UGC
+  listing_count: 2
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Kudobuzz
+    register_id: kudobuzz
+    matched_domain: kudobuzz.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: MailerLite
+  partner: mailerlite
+  partner_match: domain
+  partner_url: https://www.mailerlite.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/mailerlite
+  category: Email
+  apps:
+  - MailerLite
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: MailerLite
+    register_id: mailerlite
+    matched_domain: mailerlite.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Olist
+  partner: olist
+  partner_match: domain
+  partner_url: https://olist.com/lp/sistema-de-gestao/?parceiro=wix
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/olist
+  category: Wix app
+  apps:
+  - Olist
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Olist
+    register_id: olist
+    matched_domain: olist.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Omnisend
+  partner: omnisend
+  partner_match: domain
+  partner_url: https://www.omnisend.com/omnisend-bookings-for-wix/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/omnisend
+  category: Email
+  apps:
+  - Omnisend Email Marketing & SMS
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Omnisend
+    register_id: omnisend
+    matched_domain: omnisend.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - WIX_CHOICE
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Order Desk
+  partner: orderdesk
+  partner_match: domain
+  partner_url: https://www.orderdesk.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/order-desk
+  category: Shipping & Delivery
+  apps:
+  - Order Desk
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Order Desk
+    register_id: order-desk
+    matched_domain: orderdesk.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Packlink
+  partner: packlink
+  partner_match: domain
+  partner_url: https://auth.packlink.com/en-GB/pro/register
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/packlink
+  category: Shipping & Delivery
+  apps:
+  - Packlink PRO Shipping Platform
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Packlink
+    register_id: packlink
+    matched_domain: packlink.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Poptin LTD
+  partner: poptin
+  partner_match: domain
+  partner_url: https://www.poptin.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/poptin-ltd
+  category: Chat
+  apps:
+  - 'WhatsApp & Chat Buttons: Chaty'
+  - Poptin Pop Ups Email Marketing
+  - Chatway AI Live Chat, WhatsApp
+  - Coupon X Discount Code Pop Ups
+  listing_count: 4
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Poptin LTD
+    register_id: poptin-ltd
+    matched_domain: poptin.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - WIX_CHOICE
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Printful
+  partner: printful
+  partner_match: domain
+  partner_url: https://printful.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/printful
+  category: Print on Demand
+  apps:
+  - 'Printful: Print on Demand'
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Printful
+    register_id: printful
+    matched_domain: printful.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - WIX_CHOICE
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Printify
+  partner: printify
+  partner_match: domain
+  partner_url: https://printify.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/printify
+  category: Print on Demand
+  apps:
+  - Printify
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Printify
+    register_id: printify
+    matched_domain: printify.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Prodigi Ltd
+  partner: prodigi
+  partner_match: domain
+  partner_url: https://www.prodigi.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/prodigi-ltd
+  category: Print on Demand
+  apps:
+  - Prodigi Print on Demand
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Prodigi Ltd
+    register_id: prodigi-ltd
+    matched_domain: prodigi.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Seel Inc.
+  partner: seel
+  partner_match: domain
+  partner_url: https://www.seel.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/seel-inc
+  category: Shipping & Delivery
+  apps:
+  - Worry-Free Purchase
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Seel Inc.
+    register_id: seel-inc
+    matched_domain: seel.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Sendcloud
+  partner: sendcloud
+  partner_match: domain
+  partner_url: https://www.sendcloud.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/sendcloud
+  category: Shipping & Delivery
+  apps:
+  - Sendcloud
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Sendcloud
+    register_id: sendcloud
+    matched_domain: sendcloud.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Seranking LTD
+  partner: se-ranking
+  partner_match: domain
+  partner_url: https://seranking.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/seranking-ltd
+  category: SEO
+  apps:
+  - SE Ranking
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Seranking LTD
+    register_id: seranking-ltd
+    matched_domain: seranking.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Shipday
+  partner: shipday
+  partner_match: domain
+  partner_url: https://www.shipday.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/shipday
+  category: Shipping & Delivery
+  apps:
+  - Local Delivery With Shipday
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Shipday
+    register_id: shipday
+    matched_domain: shipday.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Shippo
+  partner: shippo
+  partner_match: domain
+  partner_url: https://goshippo.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/shippo
+  category: Shipping & Delivery
+  apps:
+  - Shippo - Scalable Shipping
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Shippo
+    register_id: shippo
+    matched_domain: goshippo.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Shiprocket
+  partner: shiprocket
+  partner_match: domain
+  partner_url: https://www.shiprocket.in
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/shiprocket
+  category: Shipping & Delivery
+  apps:
+  - Shiprocket
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Shiprocket
+    register_id: shiprocket
+    matched_domain: shiprocket.in
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: ShipStation
+  partner: shipstation
+  partner_match: domain
+  partner_url: https://www.shipstation.com/?ref=partner-wix&utm_source=wix&utm_medium=partner&utm_campaign=
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/shipstation
+  category: Shipping & Delivery
+  apps:
+  - ShipStation
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: ShipStation
+    register_id: shipstation
+    matched_domain: shipstation.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Silvr
+  partner: silvr
+  partner_match: domain
+  partner_url: https://silvr.co
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/silvr
+  category: Accounting
+  apps:
+  - Silvr Bridge
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Silvr
+    register_id: silvr
+    matched_domain: silvr.co
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Skydropx
+  partner: skydropx
+  partner_match: domain
+  partner_url: https://skydropx.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/skydropx
+  category: Shipping & Delivery
+  apps:
+  - Skydropx
+  listing_count: 2
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Skydropx
+    register_id: skydropx
+    matched_domain: skydropx.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Snap Inc.
+  partner: snap
+  partner_match: domain+name-among-holders
+  partner_url: https://www.snap.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/snap-inc
+  category: Ads
+  apps:
+  - Snapchat Ads
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Snap Inc.
+    register_id: snap-inc
+    matched_domain: snap.com
+    matched_by: domain+name-among-holders
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: TapStitch
+  partner: tapstitch
+  partner_match: domain
+  partner_url: https://www.TapStitch.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/tapstitch
+  category: Print on Demand
+  apps:
+  - 'Tapstitch: POD & Dropshipping'
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: TapStitch
+    register_id: tapstitch
+    matched_domain: tapstitch.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: TikTok for Business
+  partner: tiktok
+  partner_match: domain+name-among-holders
+  partner_url: https://www.tiktok.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/tiktok-for-business
+  category: Ads
+  apps:
+  - TikTok Ads
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: TikTok for Business
+    register_id: tiktok-for-business
+    matched_domain: tiktok.com
+    matched_by: domain+name-among-holders
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Trustpilot
+  partner: trustpilot
+  partner_match: domain
+  partner_url: https://www.trustpilot.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/trustpilot
+  category: Reviews & Testimonials
+  apps:
+  - Trustpilot Reviews
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Trustpilot
+    register_id: trustpilot
+    matched_domain: trustpilot.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Usercentrics GmbH
+  partner: usercentrics
+  partner_match: domain+name-among-holders
+  partner_url: https://usercentrics.com/
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/usercentrics-gmbh
+  category: Privacy & Security
+  apps:
+  - Usercentrics for Wix
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Usercentrics GmbH
+    register_id: usercentrics-gmbh
+    matched_domain: usercentrics.com
+    matched_by: domain+name-among-holders
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - WIX_CHOICE
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Weglot
+  partner: weglot
+  partner_match: domain
+  partner_url: https://weglot.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/weglot
+  category: Content Services
+  apps:
+  - Weglot Translate
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Weglot
+    register_id: weglot
+    matched_domain: weglot.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  publisher_verified:
+  - Verified by Wix
+- partner_name: Zeffy
+  partner: zeffy
+  partner_match: domain
+  partner_url: https://www.zeffy.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/zeffy
+  category: Crowdfunding
+  apps:
+  - Zeffy Donations & Fundraising
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Zeffy
+    register_id: zeffy
+    matched_domain: zeffy.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: ZeroBounce
+  partner: zerobounce
+  partner_match: domain
+  partner_url: https://www.zerobounce.net
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/zerobounce
+  category: Email
+  apps:
+  - ZeroBounce
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: ZeroBounce
+    register_id: zerobounce
+    matched_domain: zerobounce.net
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+- partner_name: Zonos
+  partner: zonos
+  partner_match: domain
+  partner_url: https://zonos.com
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.wix.com/app-market/developer/zonos
+  category: Shipping & Delivery
+  apps:
+  - Zonos Sync
+  listing_count: 1
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
+  contract_reference:
+    register: Wix App Market (www.wix.com/_api/app-market-search/v1/search + /_api/marketplace-api/v1/company/<slug>,
+      the page's own keyless JSON)
+    registered_name: Zonos
+    register_id: zonos
+    matched_domain: zonos.com
+    matched_by: domain
+    identity_source: the developer company page's own website (else support e-mail) field
+    signal_note: one edge per (developer, platform); listings are context, never counted; Wix app review is the
+      listing requirement
+    detected_by: sweep-wix-app-market.py
+    detected: '2026-10-22'
+  badges:
+  - SELF_PUBLISHED
+- partner_name: Wix
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: own
+  channel: provider-built
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://www.wix.com/app-market/
+  category: Wix-built apps
+  apps:
+  - Amazon with Wix
+  - Appointment Waitlist
+  - Bulk Coupon Creator
+  - Color Selection
+  - Colorado Retail Delivery Fee
+  - Colorblind Simulator
+  - Contrast Checker
+  - Design Guides
+  - 'Do Not Sell Data '
+  - Download the Mobile App
+  - Focus Timer
+  - Get Image Colors
+  - Google & YouTube
+  - Google Ads for Wix (Official)
+  - Igul Letova
+  - Instagram Feed (New)
+  - Keyboard Shortcuts
+  - Legends
+  - Next Availability
+  - Old Wix Forms and Payments
+  - Pay Button (Classic)
+  - Pay Button 2.0
+  - Payroll Calculator
+  - Product Groups
+  - Purchase Orders
+  - Right Click Protect
+  - SEO Settings
+  - SEO Setup Checklist
+  - Site Inspection
+  - 'Square for Restaurants '
+  - Table Master
+  - Task List
+  - TikTok Catalog Feed
+  - URL Redirect Manager
+  - Wix Blog
+  - Wix Bookings
+  - Wix Checkout Requirements
+  - Wix Client Check-In
+  - Wix Comments
+  - Wix Donations
+  listing_count: 71
+  detected_by: sweep-wix-app-market.py
+  detected: '2026-10-22'
 templates:
 - title: Add or update Mailchimp subscribers when a new Wix Form is submitted
   url: https://zapier.com/apps/mailchimp/integrations/wix/962616/add-or-update-mailchimp-subscribers-when-a-new-wix-form-is-submitted
