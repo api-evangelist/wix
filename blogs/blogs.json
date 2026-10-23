@@ -9,14 +9,14 @@
       "source": "https://www.wix.com/blog",
       "feed_url": "https://www.wix.com/blog/blog-feed.xml",
       "title": "",
-      "saved": 19,
+      "saved": 0,
       "method": "discovered"
     },
     {
       "source": "https://www.wix.com/blog/blog-feed.xml",
       "feed_url": "https://www.wix.com/blog/blog-feed.xml",
       "title": "",
-      "saved": 9,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -27,6 +27,6 @@
       "method": "none"
     }
   ],
-  "post_count": 28,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 31,
+  "fetched": "2026-10-17T14:53:57Z"
 }
